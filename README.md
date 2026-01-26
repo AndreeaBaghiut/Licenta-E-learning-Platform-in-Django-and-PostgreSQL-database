@@ -1,10 +1,10 @@
-# Licenta - Learning Management System (LMS)
+# E-learning platform
 
 A comprehensive Django-based Learning Management System designed to facilitate online education with role-based access for students, teachers, and administrators.
 
-## 📋 Project Overview
+## Project Overview
 
-Licenta is a full-featured LMS that enables teachers to create and manage courses, while students can enroll, track progress, complete quizzes, and earn certificates. The platform supports multiple course categories, progress tracking, and interactive learning resources.
+This is a full-featured LMS that enables teachers to create and manage courses, while students can enroll, track progress, complete quizzes, and earn certificates. The platform supports multiple course categories, progress tracking, and interactive learning resources.
 
 ### Key Features
 
@@ -40,7 +40,7 @@ Licenta is a full-featured LMS that enables teachers to create and manage course
   - Real-time progress tracking
   - Course performance analytics
 
-## � Screenshots
+## Platform photos:
 
 ### Student Dashboard
 Students can view enrolled courses, track progress, and access learning materials.
@@ -87,11 +87,11 @@ Browse and filter courses by categories (Languages, General, etc.).
   - `Pillow` - Image processing
   - `requests` - HTTP client library
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 licenta/
-├── Licenta/                    # Project settings and configuration
+├── Licenta/                   # Project settings and configuration
 │   ├── settings.py            # Django settings
 │   ├── urls.py                # URL routing
 │   ├── wsgi.py                # WSGI application
@@ -122,16 +122,16 @@ licenta/
 ├── templates/                 # Base templates
 ├── manage.py                  # Django management script
 ├── requirements.txt           # Python dependencies
-└── package.json               # Node.js dependencies (if applicable)
+└── package.json               # Node.js dependencies
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
 - Python 3.8+
-- pip (Python package manager)
-- Virtual environment (recommended)
+- pip 
+- Virtual environment
 
 ### Installation
 
@@ -177,7 +177,7 @@ licenta/
 
    The application will be available at `http://localhost:8000`
 
-## 📊 Models Overview
+## Models Overview
 
 ### User Management
 - **FrontUser** - Custom user model extending Django's User model
@@ -200,7 +200,7 @@ licenta/
 - **QuizResult** - Stores student quiz attempt results
 - **Certificate** - Issued upon course completion with approval workflow
 
-## 🔐 Authentication & Authorization
+## Authentication & Authorization
 
 The project uses a custom user model (`FrontUser`) with role-based access control:
 
@@ -208,7 +208,7 @@ The project uses a custom user model (`FrontUser`) with role-based access contro
 - **Teacher**: Can create/manage courses, view student progress, approve certificates
 - **Administrator**: Full system access via Django admin panel
 
-## 📝 Main URLs
+## Main URLs
 
 The application uses a modular URL structure:
 
@@ -218,7 +218,7 @@ The application uses a modular URL structure:
 - `/teacher/` - Teacher course management
 - `/admin/` - Django admin panel
 
-## 🗄️ Database Setup
+## Database Setup
 
 Initial migrations are included. To run migrations:
 
@@ -236,7 +236,7 @@ Existing migration files cover:
 - Certificates and approval workflows
 - Programming exercises and test cases
 
-## ⚙️ Configuration
+## Configuration
 
 Key settings in [Licenta/settings.py](Licenta/settings.py):
 
@@ -246,7 +246,7 @@ Key settings in [Licenta/settings.py](Licenta/settings.py):
 - **DEBUG**: Set to `True` for development (disable in production)
 - **Security**: Uses Django's security middleware (update SECRET_KEY in production)
 
-## 🔧 Development
+## Development
 
 ### Running Tests
 ```bash
@@ -261,9 +261,9 @@ python manage.py createsuperuser
 ### Accessing Admin Panel
 Navigate to `http://localhost:8000/admin/` and log in with your superuser credentials.
 
-## 📦 Dependencies
+## Dependencies
 
-See [requirements.txt](requirements.txt) for complete list. Main packages:
+See requirements.txt for complete list. Main packages:
 
 - `django~=5.0.4` - Web framework
 - `django-tinymce` - Rich text editing for course content
@@ -272,19 +272,19 @@ See [requirements.txt](requirements.txt) for complete list. Main packages:
 - `Pillow` - Image processing for uploads
 - `requests` - HTTP library for external integrations
 
-## 📄 License
+## License
 
 This project is a bachelor's degree project (Licenta).
 
-## 🤝 Contributing
+## Contributing
 
 For development and bug fixes, please create a pull request with a clear description of changes.
 
-## 📧 Support
+## Support
 
 For issues and questions, please open an issue in the repository.
 
-## 🚀 Deployment Considerations
+## Deployment Considerations
 
 Before deploying to production:
 
@@ -313,7 +313,7 @@ Before deploying to production:
    - Configure logging
    - Set up uptime monitoring
 
-## 📚 Additional Resources
+## Additional Resources
 
 - [Django Documentation](https://docs.djangoproject.com/)
 - [Django Best Practices](https://django.readthedocs.io/en/stable/internals/contributing/writing-code/coding-style.html)
@@ -321,4 +321,4 @@ Before deploying to production:
 
 ---
 
-**Last Updated**: January 2026
+**Last Updated**: June 2025
