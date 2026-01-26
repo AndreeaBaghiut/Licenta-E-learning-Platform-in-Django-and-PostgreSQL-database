@@ -2,7 +2,7 @@
 
 A comprehensive Django-based Learning Management System designed to facilitate online education with role-based access for students, teachers, and administrators.
 
-## Project Overview
+## Project Overview 
 
 This is a full-featured LMS that enables teachers to create and manage courses, while students can enroll, track progress, complete quizzes, and earn certificates. The platform supports multiple course categories, progress tracking, and interactive learning resources.
 
