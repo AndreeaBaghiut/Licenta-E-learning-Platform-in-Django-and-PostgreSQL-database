@@ -1,0 +1,161 @@
+{% extends "student_header.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'studentDashboard/css/studentDashboard.css' %}">
+</head>
+
+<div class="dashboard-container">
+  <h1>Dashboard</h1>
+
+  <div class="dashboard-content">
+
+    <section class="dashboard-section">
+      <div class="section-header">
+        <h2>Cursuri în progres</h2>
+      </div>
+      
+      <div class="course-list">
+        {% for enrollment in in_progress_enrollments %}
+        <div class="course-card">
+          <div class="course-image">
+            <img src="{{ enrollment.course.course_image.url }}" alt="{{ enrollment.course.name }}" width="180" height="120">
+          </div>
+          <div class="course-details">
+            <h3>{{ enrollment.course.name }}</h3>
+            <div class="progress-wrapper">
+              <div class="progress">
+                <div class="progress-bar" style="width: {{ enrollment.progress }}%"></div>
+              </div>
+              <span class="progress-text">{{ enrollment.progress }}% completat</span>
+            </div>
+            <div class="course">
+              <span class="enroll-date">Înscris pe: {{ enrollment.enrolled_on|date:"d M Y" }}</span>
+              {% if enrollment.last_accessed %}
+              <span class="last-access">Ultima accesare: {{ enrollment.last_accessed|date:"d M Y" }}</span>
+              {% endif %}
+            </div>
+            <br>
+            <a href="{% url 'student_dashboard_course' enrollment.course.id %}" class="continue-btn">Continuă cursul</a>
+          </div>
+        </div>
+        {% empty %}
+        <div class="empty">
+          <p>Nu ai niciun curs în progres.</p>
+          <a href="{% url 'explore' %}" class="explore-btn">Explorează cursuri</a>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="dashboard-section">
+      <div class="section-header">
+        <h2>Cursuri finalizate</h2>
+      </div>
+      
+      <div class="course-list">
+        {% for enrollment in completed_enrollments %}
+        <div class="course-card">
+          <div class="course-image">
+            <img src="{{ enrollment.course.course_image.url }}" alt="{{ enrollment.course.name }}" width="180" height="120">
+          </div>
+          <div class="course-details">
+            <h3>{{ enrollment.course.name }}</h3>
+            <div class="progress-wrapper completed">
+              <div class="progress">
+                <div class="progress-bar" style="width: {{ enrollment.final_score }}%">
+                </div>
+              </div>
+              <span class="progress-text">Scor final: {{ enrollment.final_score }}%</span>
+            </div>
+            <div class="course">
+              <span class="completion-date">Finalizat pe: {% if enrollment.completion_date %}{{ enrollment.completion_date|date:"d M Y" }}{% else %}{{ enrollment.enrolled_on|date:"d M Y" }}{% endif %}</span>
+            </div>
+            {% if enrollment.final_score >= 75 %}
+              {% if enrollment.certificate_status == 'approved' %}
+                <span class="certificate-info success">Diplomă obținută</span>
+              {% elif enrollment.certificate_status == 'pending' %}
+                <span class="certificate-info pending">Cerere în așteptare</span>
+              {% elif enrollment.certificate_status == 'rejected' %}
+                <span class="certificate-info low-score">Cerere diplomă respinsă</span>
+              {% else %}
+                <a href="{% url 'request_certificate' enrollment.id %}" class="certificate-btn">Solicită diplomă</a>
+              {% endif %}
+            {% else %}
+              <span class="certificate-info low-score">Scor insuficient pentru diplomă (minim 75%)</span>
+            {% endif %}
+          </div>
+        </div>
+        {% empty %}
+        <div class="empty">
+          <p>Nu ai finalizat niciun curs încă.</p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="dashboard-section">
+      <div class="section-header">
+        <h2>Recomandate pentru tine</h2>
+      </div>
+      
+      <div class="course-grid">
+        {% for course in recommended_courses %}
+        <div class="course-recommendation">
+          <div class="course-image">
+            <img src="{{ course.course_image.url }}" alt="{{ course.name }}" style="width: 100%; height: 140px; object-fit: cover;">
+          </div>
+          <div class="course-content">
+            <h4>{{ course.name }}</h4>
+            <p>{{ course.description|truncatewords:15 }}</p>
+            <div class="course-categories">
+              {% for category in course.categories.all %}
+              <span class="category-tag">{{ category.name }}</span>
+              {% endfor %}
+            </div>
+            <a href="{% url 'course_detail' course.id %}" class="details-btn">Vezi detalii</a>
+          </div>
+        </div>
+        {% empty %}
+        <div class="empty">
+          <p>Nu avem recomandări momentan.</p>
+          <a href="{% url 'explore' %}" class="explore-btn">Explorează toate cursurile</a>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Statistici -->
+    <section class="stats-section">
+      <h2>Statisticile tale</h2>
+      
+      <div class="stats-container">
+        <div class="stat">
+          <span class="stat-title">Total cursuri</span>
+          <span class="stat-number">{{ total_courses }}</span>
+        </div>
+        <div class="stat">
+          <span class="stat-title">Cursuri finalizate</span>
+          <span class="stat-number">{{ completed_courses }}</span>
+        </div>
+        <div class="stat">
+          <span class="stat-title">Diplome obținute</span>
+          <span class="stat-number">{{ certificates_count }}</span>
+        </div>
+        <div class="stat">
+          <span class="stat-title">Scor mediu</span>
+          <span class="stat-number">{{ avg_score }}%</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock %}

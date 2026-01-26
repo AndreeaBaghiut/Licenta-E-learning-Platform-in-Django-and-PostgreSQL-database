@@ -1,0 +1,5 @@
+Salut {{ user.username }},
+
+te rog să apeși pe link-ul de mai jos pentru a-ți confirma email-ul:
+
+<p><a href="{{ protocol }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Confirmă email</a></p>

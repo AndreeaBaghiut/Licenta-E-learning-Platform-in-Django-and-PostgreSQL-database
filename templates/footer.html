@@ -1,0 +1,50 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}"></head>
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Despre -->
+        <div class="footer-section about">
+            <h4><a href="{% url 'about_us' %}">Despre noi</a></h4>
+            <p>Suntem o platformă educațională ce oferă o varietate de cursuri și resurse pentru  dezvoltarea atât personală cât și profesională.</p>
+        </div>
+        
+        <!-- Contact -->
+        <div class="footer-section contact">
+            <h4>Contact Us</h4>
+            <p>Email: testEmail@gmail.com</p>
+        </div>
+        
+        <!-- Termeni-->
+        <div class="footer-section terms">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="{% url 'terms' %}">Termeni & Condiții</a></li>
+                <li><a href="{% url 'terms' %}">Politică de confidențialitate</a></li>
+            </ul>
+        </div>
+        
+        <!-- Socials -->
+        <div class="footer-section social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#">
+                    <img src="/media/site_icons/linkedin.png" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="#">
+                    <img src="/media/site_icons/instagram.png" alt="Instagram" class="social-icon">
+                </a>
+            </div>
+        </div>
+        <!-- Suport -->
+        <div class="footer-section support">
+            <h4>Susține-ne</h4>
+                <ul>
+                    <li><a href="{% url 'donate' %}">Donează pentru educație gratuită</a></li>
+                </ul>
+        </div>
+<br><br><br>
+    <div class="footer-bottom">
+        <p>&copy; 2025 COD. All rights reserved.</p>
+    </div>
+</footer>

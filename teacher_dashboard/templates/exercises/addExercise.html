@@ -1,0 +1,60 @@
+{% extends 'teacher_header.html' %}
+{% load static %}
+{% block title %}
+    Add exercise
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+    {% block head %}
+        <link rel="stylesheet" href="{% static 'teacherDashboard/css/addExercise.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/ayu-mirage.min.css" integrity="sha512-83Qw5YjeKhwUh0sTjLweNX0/xqhfPAghTPNKP3W2VREm8waJe6rjrpGFN3zl9CMDoInarIjiAfNBE7p+NGPM7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% endblock %}
+
+<div class="page-container">
+    <div class="container">
+        <h2>Adaugă exercițiu nou</h2>
+        <form method="post" id="exercise-form">
+            {% csrf_token %}
+            <div class="form-section">
+                <h4>Detalii</h4>
+                {{ exercise_form.title }}
+                {{ exercise_form.description }}
+                {{ exercise_form.programming_language }}
+                {{ exercise_form.difficulty }}
+                <input type="hidden" id="exercise-id" value="{{ exercise_form.instance.id|default_if_none:'' }}">
+                <label for="id_reference_solution">Soluție de referință</label>
+                {{exercise_form.reference_solution}}
+            </div>
+            
+            <div class="form-section">
+                <h4>Cazuri de testare</h4>
+                {{ test_case_formset.management_form }}
+                {% if test_case_formset %}
+                    {% for form in test_case_formset %}
+                        <div class="test-case">
+                            <label for="{{ form.input_data.id_for_label }}">Input</label>
+                            <textarea name="{{ form.input_data.html_name }}" id="{{ form.input_data.auto_id }}" rows="2" placeholder="Introdu input de tipul ex: 2 3 4 5"></textarea>     
+                            <label for="{{ form.expected_output.id_for_label }}">Output așteptat</label>
+                            <textarea name="{{ form.expected_output.html_name }}" id="{{ form.expected_output.auto_id }}" rows="2" placeholder="Introdu output-ul așteptat ex: 2"></textarea>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </form>
+        
+        <div class="button-group">
+            <button type="button" class="btn btn-primary" id="run-tests-btn">Adaugă</button>
+            <a href="{% url 'teacher_exercises' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'teacherDashboard/js/addExercise.js' %}" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/clike/clike.min.js"></script>
+
+{% endblock %}

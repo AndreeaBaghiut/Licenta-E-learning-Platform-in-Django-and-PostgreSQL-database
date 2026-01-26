@@ -1,0 +1,48 @@
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static '/css/about.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+{% if is_student %}
+{% include 'student_header.html' %}
+{% else %}
+{% include 'visitor_header.html' %}
+{% endif %}
+
+<main class="main-container">
+    <div class="content-wrapper">
+        <div class="header-section">
+            <h1>Despre proiect</h1>
+            <hr>
+        </div>
+
+        <div class="about-section">
+            <div class="text-content">
+                <h4>Platforma educațională pentru programare COD</h4>
+                <p>
+                    Acest proiect reprezintă lucrarea mea de licență dezvoltată în cadrul Facultății de Științe Economice și Gestiunea Afacerii.
+                </p>
+                <p>
+                    Platforma oferă resurse pentru învățarea programării, exerciții practice și 
+                    materiale de pregătire pentru interviuri tehnice. Scopul său este de a ajuta 
+                    studenții și persoanele interesate să-și dezvolte competențele de programare 
+                    într-un mod structurat și interactiv.
+                </p>
+                <p>
+                    Proiectul a fost dezvoltat folosind framework-ul Django.
+                </p>
+            </div>
+            <div class="image-content">
+                <img src="{% static 'teacherDashboard/images/cod-logo.png' %}" class="logo-image" alt="Logo">
+            </div>
+        </div>
+    </div>
+</main>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock %}

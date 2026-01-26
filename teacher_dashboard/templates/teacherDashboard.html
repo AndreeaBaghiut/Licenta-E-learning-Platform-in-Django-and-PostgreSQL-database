@@ -1,0 +1,63 @@
+{% extends "teacher_header.html" %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'teacherDashboard/css/teacherDashboard.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<div class="page-container">
+    <div class="dashboard-layout">
+        <!-- Partea stângă cu salutul -->
+        <div class="welcome-section">
+    <div class="welcome-container">
+        <h2>Salut, {{ teacher.surname }}</h2>
+        <p class="welcome-text">Ce ai vrea să faci astăzi?</p>
+        <div class="welcome-description">
+            Selectează una din opțiuni pentru a începe.
+        </div>
+    </div>
+</div>
+        
+        <!-- Partea dreaptă cu TO-DO -->
+        <div class="todo-section">
+            <div class="todo-window">
+                <!-- Bara de fereastră -->
+                <div class="window-header">
+                    <span class="window-title">TO-DO.EXE</span>
+                    <div class="window-controls">
+                        <span class="window-button">_</span>
+                        <span class="window-button">□</span>
+                        <span class="window-button">×</span>
+                    </div>
+                </div>
+                
+                <!-- Conținutul ferestrei -->
+                <div class="window-content">
+                    <div class="options-grid">
+                        <a href="{% url 'teacher_courses' %}" class="option-item courses-option">
+                            <i class="fas fa-book option-icon"></i>
+                            <span class="option-text">Cursurile tale</span>
+                        </a>
+                        
+                        <a href="{% url 'teacher_exercises' %}" class="option-item exercises-option">
+                            <i class="fas fa-code option-icon"></i>
+                            <span class="option-text">Exercițiile tale</span>
+                        </a>
+                        
+                        <a href="{% url 'interview_questions' %}" class="option-item interviews-option">
+                            <i class="fas fa-comments option-icon"></i>
+                            <span class="option-text">Întrebările tale</span>
+                        </a>
+                        
+                        <a href="{% url 'statistics' %}" class="option-item statistics-option">
+                            <i class="fas fa-chart-line option-icon"></i>
+                            <span class="option-text">Statistici</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'visitator/css/visitator_header.css' %}">
+{% block header %}
+<nav class="navbar-retro">
+    <div class="container-fluid-retro">
+        <!-- Logo site -->
+        <a class="navbar-brand-retro" href="{% url 'home' %}">
+            <img src="{% static 'teacherDashboard/images/cod-logo.png' %}" alt="COD Logo" class="navbar-brand-img-retro">
+        </a>
+        
+        <!-- Link-uri de navigatie -->
+        <ul class="navbar-nav-retro">
+            <li>
+                <a class="nav-link-retro" href="{% url 'explore' %}">Explorează</a>
+            </li>
+            <li>
+                <a class="nav-link-retro" href="{% url 'solve_exercises' %}">Exerciții</a>
+            </li>
+            <li>
+                <a class="nav-link-retro" href="{% url 'solve_questions' %}">Pregătire</a>
+            </li>
+        </ul>
+
+        <!-- Buton Login/Register -->
+        <div class="nav-actions-retro">
+            <div class="login-register-btn-retro">
+                <a href="{% url 'login_role' %}" class="half-link-retro">Login</a>
+                <span class="divider-retro"></span>
+                <a href="{% url 'register_role' %}" class="half-link-retro">Register</a>
+            </div>
+        </div>
+    </div>
+</nav>
+{% endblock %}

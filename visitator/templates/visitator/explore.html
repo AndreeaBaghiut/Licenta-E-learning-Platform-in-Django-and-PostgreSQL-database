@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    {% load static %}
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS doar pentru carousel -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Explorează cursurile</title>
+    <link rel="stylesheet" href="{% static 'visitator/css/explore.css' %}">
+    {% endblock %}
+</head>
+<body>
+
+{% block header %}
+    {% if is_student %}
+        {% include 'student_header.html' %}
+    {% else %}
+        {% include 'visitor_header.html' %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<main class="main-container">
+    <!-- Sectiunea de cursuri populare -->
+    <section class="popular-courses-section">
+        <h2 class="section-title">Cursuri populare</h2>
+        
+        <!-- Bootstrap carousel  -->
+        <div id="popularCoursesCarousel" class="carousel slide custom-carousel" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-inner">
+                {% for group in grouped_courses %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                        <div class="carousel-course-grid">
+                            {% for course in group %}
+                                <div class="course-card-wrapper {% if forloop.counter == 1 %}left-card{% elif forloop.counter == 2 %}center-card{% else %}right-card{% endif %}">
+                                    <div class="course-card {% if forloop.counter == 2 %}featured-card{% endif %}">
+                                        <a href="{% url 'course_detail' course.id %}" class="course-img-link">
+                                            <img src="{{ course.course_image.url }}" class="course-img" alt="{{ course.name }}">
+                                        </a>
+                                        <div class="course-content">
+                                            <h5 class="course-title">{{ course.name }}</h5>
+                                            <p class="course-desc">{{ course.description|truncatewords:10 }}</p>
+                                            <div class="course-footer">
+                                                <a href="{% url 'course_detail' course.id %}" class="view-details-btn">Vezi detalii</a>
+                                                <div class="enrollment-count">
+                                                    <i class="fas fa-users"></i> {{ course.student_count }} studenți înscriși
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Navigare carousel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#popularCoursesCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Înapoi</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#popularCoursesCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Înainte</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Continut principal cu filtre si lista de cursuri -->
+    <div class="courses-main-content">
+        <!-- Sidebar cu Filtre -->
+        <aside class="filters-sidebar">
+            <div class="filters-wrapper">
+                <h5 class="filters-title"><i class="fas fa-filter"></i> Filtre</h5>
+
+                <!-- Filtru categorii -->
+                <div class="filter-group">
+                    <div class="filter-header">
+                        <h6>Categorii</h6>
+                        <button id="categoryToggle" class="toggle-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+
+                    <!-- Search bar -->
+                    <div id="categoryFilterCollapse" class="filter-content" style="display: none;">
+                        <input type="text" id="categorySearch" class="search-input" placeholder="Caută categorii...">
+
+                        <div id="categoryList" class="filter-list">
+                            {% for category in categories %}
+                                <div class="filter-item">
+                                    <input type="checkbox" id="category{{ category.id }}" value="{{ category.id }}" data-filter-type="category">
+                                    <label for="category{{ category.id }}">{{ category.name }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtru pt limbaj -->
+                <div class="filter-group">
+                    <div class="filter-header">
+                        <h6>Limbaje de programare</h6>
+                        <button id="languageToggle" class="toggle-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div id="languageFilterCollapse" class="filter-content" style="display: none;">
+                        <div id="languageList" class="filter-list">
+                            {% for language in languages %}
+                                <div class="filter-item">
+                                    <input type="checkbox" id="language{{ language.id }}" value="{{ language.id }}" data-filter-type="language">
+                                    <label for="language{{ language.id }}">{{ language.name }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Lista de cursuri -->
+        <section class="course-list-section">
+            <h2 class="section-title">Toate cursurile</h2>
+            <div id="courseList" class="course-list">
+                {% if all_courses %}
+                    {% for course in all_courses %}
+                        <div class="course-list-item">
+                            <div class="course-list-img-container">
+                                <img src="{{ course.course_image.url }}" class="course-list-img" alt="{{ course.name }}">
+                            </div>
+                            <div class="course-list-content">
+                                <h5 class="course-list-title">{{ course.name }}</h5>
+                                <p class="course-list-desc">{{ course.description|truncatewords:20 }}</p>
+                                <a href="{% url 'course_detail' course.id %}" class="view-details-btn">Vezi detalii</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="no-courses-message">Niciun curs în acest moment. Încearcă mai târziu.</p>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+
+<!-- Bootstrap JS pentru carousel -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'visitator/js/explore.js' %}"></script>
+</body>
+</html>

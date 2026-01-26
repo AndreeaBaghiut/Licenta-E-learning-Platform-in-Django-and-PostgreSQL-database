@@ -1,0 +1,52 @@
+{% extends 'teacher_header.html' %}
+{% load static %}
+{% block title %}
+    Adaugă întrebare
+{% endblock %}
+
+{% block content %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'teacherDashboard/css/addQuestion.css' %}">   
+    <script src="{% static 'teacherDashboard/js/addQuestion.js' %}" defer></script>
+    <script src="{% static 'teacherDashboard/js/addCourse.js' %}" defer></script>
+{% endblock %}
+
+<div class="page-container">
+    <div class="container">
+        <h2>Adaugă o întrebare nouă</h2>
+        <form method="post" id="question-form">
+            {% csrf_token %}
+            <div class="form-section">
+                <h4>Detalii</h4>
+                {{ question_form.question }}
+                {{ question_form.answer }}
+                
+                <div class="form-group">
+                    <label for="categories">Categorii:</label>
+                    
+                    <!-- categoriile selectate -->
+                    <div id="selected-categories" class="selected-categories-display"></div>
+                    <div id="selected-category-inputs"></div>
+                    
+                    <!-- lista de categorii -->
+                    <div class="category-section">
+                        <h5>Selectează categoriile:</h5>
+                        <div id="category-list" class="category-list-permanent"></div>
+                    </div>
+                </div>
+                
+                <input type="hidden" id="question-id" value="{{ question_form.instance.id|default_if_none:'' }}">
+            </div>
+            
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary" id="save-btn">Salvează</button>
+                <a href="{% url 'interview_questions' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock %}

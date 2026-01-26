@@ -1,0 +1,122 @@
+{% extends "teacher_header.html" %}
+{% load static %}
+
+{% block title %}Dashboard Profesor{% endblock %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'teacherDashboard/css/teacherDashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'teacherDashboard/css/statistics.css' %}">
+</head>
+
+<div class="page-container">
+    <div class="dashboard-container">
+        <div class="container">
+            
+            <!-- Top row: Selector în stânga + Statistici în dreapta -->
+            <div class="dashboard-top-row">
+                <!-- Selectează cursul - stânga -->
+                <section class="dashboard-section course-selection-section">
+                    <div class="section-header">
+                        <h2>Selectează cursul</h2>
+                    </div>
+                    <div class="course-selector">
+                        <form method="get" action="" id="course-select-form">
+                            <select name="course_id" id="course-select" class="course-select">
+                                {% for course in teacher_courses %}
+                                    <option value="{{ course.id }}" {% if selected_course.id == course.id %}selected{% endif %}>{{ course.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Statistici curs - dreapta -->
+                <section class="dashboard-section statistics-section">
+                    <div class="section-header">
+                        <h2>Statistici: {{ selected_course.name }}</h2>
+                    </div>
+                    
+                    <div class="stats-container">
+                        <div class="stat">
+                            <span class="stat-title">Studenți înscriși</span>
+                            <span class="stat-number">{{ enrolled_students_count }}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-title">Studenți care au finalizat</span>
+                            <span class="stat-number">{{ completed_count }}</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-title">Scor mediu</span>
+                            <span class="stat-number">{{ avg_score }}%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-title">Diplomă obținută</span>
+                            <span class="stat-number">{{ certificate_count }}</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bottom row: Solicitări diplome - pe toată lățimea -->
+            <section class="dashboard-section certificates-section">
+                <div class="section-header">
+                    <h2>Solicitări diplome</h2>
+                </div>
+                
+                <div class="certificate-requests">
+                    {% if pending_certificates %}
+                        <div class="table-container">
+                            <table class="requests-table">
+                                <thead>
+                                    <tr>
+                                        <th>Student</th>
+                                        <th>Data solicitării</th>
+                                        <th>Scor</th>
+                                        <th>Timp total petrecut</th>
+                                        <th>Risc</th>
+                                        <th>Acțiuni</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for cert in pending_certificates %}
+                                    <tr>
+                                        <td>{{ cert.enrollment.student.username }}</td>
+                                        <td>{{ cert.issue_date|date:"d M Y" }}</td>
+                                        <td>{{ cert.enrollment.progress }}%</td>
+                                        <td>{{ cert.total_time_spent }}</td>
+                                        <td>{{ cert.risk_level_display }}</td>
+                                        <td class="actions">
+                                            <form method="post" action="{% url 'process_certificate' cert.id %}" class="action-form">
+                                                {% csrf_token %}
+                                                <button type="submit" name="action" value="approve" class="btn btn-success">Aprobă</button>
+                                                <button type="submit" name="action" value="reject" class="btn btn-danger">Respinge</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="empty-state">
+                            <p>Nu există solicitări de diplome pentru acest curs.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('course-select').addEventListener('change', function() {
+        document.getElementById('course-select-form').submit();
+    });
+</script>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock %}

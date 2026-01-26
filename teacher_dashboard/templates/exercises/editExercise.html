@@ -1,0 +1,67 @@
+{% extends 'teacher_header.html' %}
+{% load static %}
+
+{% block title %}
+    Edit exercise
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'teacherDashboard/css/addExercise.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/ayu-mirage.min.css" integrity="sha512-83Qw5YjeKhwUh0sTjLweNX0/xqhfPAghTPNKP3W2VREm8waJe6rjrpGFN3zl9CMDoInarIjiAfNBE7p+NGPM7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+<div class="page-container">
+    <div class="container">
+        <h2>Edit Exercise</h2>
+        <form method="post" id="exercise-form">
+            <div class="form-section">
+                <h4>Detalii</h4>
+                {{ exercise_form.title }}
+                {{ exercise_form.description }}
+                {{ exercise_form.programming_language }}
+                {{ exercise_form.difficulty }}
+                <input type="hidden" id="exercise-id" value="{{ exercise_form.instance.id|default_if_none:'' }}">
+                <label for="id_reference_solution">Soluție de referință</label>
+                {{exercise_form.reference_solution}}
+            </div>
+            
+            <div class="form-section">
+                <h4>Cazuri de testare</h4>
+                {{ test_case_formset.management_form }}
+                {% for form in test_case_formset %}
+                <div class="test-case">
+                    <label for="{{ form.input_data.id_for_label }}">Input</label>
+                    <textarea name="{{ form.input_data.name }}" id="{{ form.input_data.auto_id }}" rows="2">{% if form.input_data.value %}{{ form.input_data.value|slice:"1:-1" }}{% endif %}</textarea>
+
+                    <label for="{{ form.expected_output.id_for_label }}">Output așteptat</label>
+                    <textarea name="{{ form.expected_output.name }}" id="{{ form.expected_output.auto_id }}" rows="2">{% if form.expected_output.value %}{{ form.expected_output.value|slice:"1:-1" }}{% endif %}</textarea>
+                </div>
+                {% endfor %}
+            </div>
+        </form>
+        
+        <div class="button-group">
+            <button type="button" class="btn btn-primary" id="run-tests-btn">Editează</button>
+            <button type="button" id="publish-btn" class="btn btn-success" onclick="publishExercise()">Publică</button>
+            <a href="{% url 'teacher_exercises' %}" class="btn btn-secondary">Cancel</a>
+            <button type="button" class="btn btn-danger" id="delete-btn" onclick="document.getElementById('delete-form').submit()">Șterge</button>
+            <form method="POST" action="{% url 'delete_exercise' exercise.id %}" id="delete-form" style="display:none">
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'teacherDashboard/js/addExercise.js' %}" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/clike/clike.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/display/placeholder.min.js"></script>
+
+{% endblock %}

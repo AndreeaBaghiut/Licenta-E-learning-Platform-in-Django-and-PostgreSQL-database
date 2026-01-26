@@ -1,0 +1,265 @@
+/* ===== VARIABILE ===== */
+:root {
+    --bg-beige: #f5f1e8;
+    --dot-pattern: #e8dcc6;
+    --login-window-bg: #ffffff;
+    --login-accent-pink: #d4a5a5;
+    --login-accent-purple: #c4a5c4;
+    --login-accent-yellow: #f2e4a1;
+    --login-accent-green: #c4e8c4;
+    --login-accent-blue: #c4c4e8;
+    --login-text-black: #000000;
+    --login-border-black: #000000;
+    --login-shadow-color: rgba(0, 0, 0, 0.3);
+    --login-error-red: #ff6b6b;
+    --login-success-green: #51cf66;
+}
+
+/* ===== BASE STYLING ===== */
+body {
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    color: #333;
+    background-color: var(--bg-beige);
+    background-image: 
+        radial-gradient(circle at 25% 25%, var(--dot-pattern) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, var(--dot-pattern) 1px, transparent 1px);
+    background-size: 20px 20px;
+    margin: 0;
+    padding: 0;
+    padding-top: 80px;
+    min-height: 100vh;
+    color: var(--login-text-black);
+}
+
+/* ===== MAIN CONTAINER ===== */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 20px;
+    justify-content: center;
+}
+
+/* ===== CONTENT SECTION ===== */
+.content-section {
+    background-color: var(--login-window-bg);
+    padding: 0;
+    border: 3px solid var(--login-border-black);
+    box-shadow: 6px 6px 0px var(--login-border-black);
+    max-width: 500px;
+    width: 100%;
+    margin: 50px auto;
+    position: relative;
+}
+
+/* Header pentru login window */
+.content-section::before {
+    content: 'LOGIN.EXE';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--login-accent-blue);
+    border-bottom: 2px solid var(--login-border-black);
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===== FORM STYLING ===== */
+.login-form {
+    margin: 0;
+    padding: 40px 30px 30px;
+    background: none;
+    box-shadow: none;
+}
+
+.form-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-header h2 {
+    color: var(--login-text-black);
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: var(--login-accent-yellow);
+    padding: 12px 20px;
+    border: 2px solid var(--login-border-black);
+    box-shadow: 3px 3px 0px var(--login-border-black);
+    display: inline-block;
+    margin: 0;
+}
+
+/* ===== FORM GROUPS ===== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    color: var(--login-text-black);
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    background-color: var(--login-accent-pink);
+    padding: 6px 10px;
+    border: 2px solid var(--login-border-black);
+    box-shadow: 2px 2px 0px var(--login-border-black);
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* ===== INPUT STYLING ===== */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    border: 3px solid var(--login-border-black);
+    padding: 12px 15px;
+    background-color: var(--login-window-bg);
+    transition: all 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    box-shadow: 3px 3px 0px var(--login-border-black);
+}
+
+.form-group input:focus {
+    background-color: var(--login-accent-yellow);
+    outline: none;
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px var(--login-border-black);
+}
+
+/* ===== ERROR HANDLING ===== */
+.field-errors {
+    margin-top: 8px;
+}
+
+.error-text {
+    color: var(--login-error-red);
+    font-size: 11px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
+    background-color: #ffe6e6;
+    padding: 4px 8px;
+    border: 2px solid var(--login-error-red);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===== FORM SUBMIT ===== */
+.form-submit {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-login {
+    color: var(--login-text-black);
+    border: 3px solid var(--login-border-black);
+    background-color: var(--login-accent-green);
+    padding: 15px 30px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px var(--login-border-black);
+}
+
+.btn-login:hover {
+    background-color: var(--login-accent-yellow);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--login-border-black);
+}
+
+/* ===== FORM FOOTER ===== */
+.form-footer {
+    border-top: 2px solid var(--login-border-black);
+    padding: 20px 30px;
+    margin: 0;
+    text-align: center;
+    background-color: var(--login-accent-purple);
+}
+
+.register-link,
+.forgot-link {
+    margin-bottom: 12px;
+    color: var(--login-text-black);
+    line-height: 1.8;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.register-link a,
+.forgot-link a {
+    color: var(--login-text-black);
+    text-decoration: none;
+    transition: all 0.3s;
+    margin-left: 5px;
+    background-color: var(--login-window-bg);
+    padding: 4px 8px;
+    border: 2px solid var(--login-border-black);
+    box-shadow: 2px 2px 0px var(--login-border-black);
+    display: inline-block;
+}
+
+.register-link a:hover,
+.forgot-link a:hover {
+    background-color: var(--login-accent-yellow);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--login-border-black);
+    text-decoration: none;
+}
+
+/* ===== MESSAGES ===== */
+.messages-container {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+}
+
+.messages-container.bottom-messages {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border: 3px solid var(--login-border-black);
+    box-shadow: 4px 4px 0px var(--login-border-black);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+}
+
+.message-error {
+    background-color: #ffe6e6;
+    color: var(--login-error-red);
+    border-color: var(--login-error-red);
+}
+
+.message-success {
+    background-color: #e6ffe6;
+    color: var(--login-success-green);
+    border-color: var(--login-success-green);
+}
+

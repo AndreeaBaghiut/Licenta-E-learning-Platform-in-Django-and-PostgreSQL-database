@@ -1,0 +1,71 @@
+{% extends "visitator/visitor_header.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'user/css/registration.css' %}">
+</head>
+
+<div class="registration-container">
+    <div class="content-section">
+        {% if messages %}
+            <div class="messages-container">
+                {% for message in messages %}
+                    <div class="message message-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    
+        <form id="demo-form" method="POST" action="{% url 'student_registration' %}" enctype="multipart/form-data" class="registration-form">
+            {% csrf_token %}
+            <div class="form-header">
+                <h2>Înregistrează-te</h2>
+            </div>
+            
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <div class="help-text">{{ field.help_text }}</div>
+                    {% endif %}
+                    {% if field.errors %}
+                        <div class="field-errors">
+                            {% for error in field.errors %}
+                                <span class="error-text">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            
+            <div class="recaptcha-group">
+                <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_PUBLIC_KEY }}"></div>
+            </div>
+            
+            <div class="terms-text">
+                Prin înregistrare, accepți <a href="{% url 'terms' %}" target="_blank" class="terms-link">Termenii și Condițiile și politica de confidențialitate</a>
+            </div>
+            
+            <div class="form-submit">
+                <button class="btn-register" type="submit">Înregistrează-te</button>
+            </div>
+        </form>
+        
+        <div class="form-footer">
+            <div class="login-link">
+                Ai deja un cont? <a href="{% url 'student_login' %}">Login</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock content %}

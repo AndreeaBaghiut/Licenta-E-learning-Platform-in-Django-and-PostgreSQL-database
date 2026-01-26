@@ -1,0 +1,390 @@
+/* ===== VARIABILE ===== */
+:root {
+    --bg-beige: #f5f1e8;
+    --dot-pattern: #e8dcc6;
+    --course-window-bg: #ffffff;
+    --course-accent-pink: #d4a5a5;
+    --course-accent-purple: #c4a5c4;
+    --course-accent-yellow: #f2e4a1;
+    --course-accent-green: #c4e8c4;
+    --course-accent-blue: #c4c4e8;
+    --course-text-black: #000000;
+    --course-border-black: #000000;
+    --course-shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    color: #333;
+    background-color: var(--bg-beige);
+    background-image: 
+        radial-gradient(circle at 25% 25%, var(--dot-pattern) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, var(--dot-pattern) 1px, transparent 1px);
+    background-size: 20px 20px;
+    margin: 0;
+    padding: 0;
+    color: var(--course-text-black);
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.main-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 100px auto 60px auto;
+    padding: 20px;
+    background-color: var(--course-window-bg);
+    border: 3px solid var(--course-border-black);
+    box-shadow: 8px 8px 0px var(--course-border-black);
+    position: relative;
+}
+
+/* ===== WINDOW HEADER PENTRU MAIN CONTAINER ===== */
+.main-container::before {
+    content: 'COURSE_DETAILS.EXE';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--course-accent-blue);
+    border-bottom: 2px solid var(--course-border-black);
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===== HEADER SECTION ===== */
+.course-header {
+    display: flex;
+    gap: 30px;
+    margin: 40px 0 40px 0;
+    align-items: flex-start;
+}
+
+.course-image-section {
+    flex: 1;
+    max-width: 450px;
+    background-color: var(--course-window-bg);
+    border: 2px solid var(--course-border-black);
+    box-shadow: 4px 4px 0px var(--course-border-black);
+    padding: 15px;
+    position: relative;
+}
+
+.course-image-section::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--course-accent-pink);
+    border-bottom: 1px solid var(--course-border-black);
+    padding: 4px 8px;
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: -15px -15px 15px -15px;
+}
+
+.course-image {
+    width: 100%;
+    border: 2px solid var(--course-border-black);
+    height: auto;
+    object-fit: cover;
+    margin-top: 0;
+}
+
+.course-details-section {
+    flex: 1;
+    background-color: var(--course-window-bg);
+    border: 2px solid var(--course-border-black);
+    box-shadow: 4px 4px 0px var(--course-border-black);
+    padding: 15px;
+    position: relative;
+}
+
+/* Header pentru secțiunea detalii */
+.course-details-section::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--course-accent-yellow);
+    border-bottom: 1px solid var(--course-border-black);
+    padding: 4px 8px;
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: -15px -15px 15px -15px;
+}
+
+.course-title {
+    color: var(--course-text-black);
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0;
+}
+
+.course-author {
+    color: var(--course-text-black);
+    margin-bottom: 25px;
+    font-size: 14px;
+    background-color: var(--course-accent-green);
+    padding: 6px 10px;
+    border: 1px solid var(--course-border-black);
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.course-info h5 {
+    color: var(--course-text-black);
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.course-categories {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.course-categories li {
+    background-color: var(--course-accent-purple);
+    color: var(--course-text-black);
+    padding: 6px 12px;
+    border: 2px solid var(--course-border-black);
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 2px 2px 0px var(--course-border-black);
+    transition: all 0.2s ease;
+}
+
+.course-categories li:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--course-border-black);
+}
+
+/* ===== ENROLLMENT SECTION ===== */
+.enrollment-section {
+    margin-top: 25px;
+    background-color: var(--course-accent-blue);
+    border: 2px solid var(--course-border-black);
+    padding: 15px;
+    box-shadow: 3px 3px 0px var(--course-border-black);
+}
+
+.completion-note {
+    margin-top: 12px;
+    color: var(--course-text-black);
+    font-size: 11px;
+    line-height: 1.4;
+    font-weight: bold;
+}
+
+/* ===== SECȚIUNI DE CONȚINUT ===== */
+.course-description,
+.instructor-section {
+    margin-bottom: 30px;
+    background-color: var(--course-window-bg);
+    border: 2px solid var(--course-border-black);
+    box-shadow: 4px 4px 0px var(--course-border-black);
+    padding: 15px;
+    position: relative;
+}
+
+/* Headers pentru secțiuni */
+.course-description::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--course-accent-green);
+    border-bottom: 1px solid var(--course-border-black);
+    padding: 4px 8px;
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: -15px -15px 15px -15px;
+}
+
+.instructor-section::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--course-accent-pink);
+    border-bottom: 1px solid var(--course-border-black);
+    padding: 4px 8px;
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: -15px -15px 15px -15px;
+}
+
+.course-section-title {
+    color: var(--course-text-black);
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: var(--course-accent-yellow);
+    padding: 8px 12px;
+    border: 2px solid var(--course-border-black);
+    display: inline-block;
+    box-shadow: 2px 2px 0px var(--course-border-black);
+    margin-top: 0;
+}
+
+.course-section-title::after {
+    display: none; 
+}
+
+.course-description p {
+    line-height: 1.5;
+    color: var(--course-text-black);
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/* ===== BUTOANE ===== */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    border: 3px solid var(--course-border-black);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 12px 20px;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 3px 3px 0px var(--course-border-black);
+    min-width: 180px;
+}
+
+.btn-primary {
+    background-color: var(--course-accent-pink) !important;
+    color: var(--course-text-black) !important;
+    border: 3px solid var(--course-border-black) !important;
+    box-shadow: 3px 3px 0px var(--course-border-black) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--course-accent-purple);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px var(--course-border-black);
+    text-decoration: none;
+    color: var(--course-text-black);
+}
+
+.btn-success {
+    background-color: var(--course-accent-green);
+    color: var(--course-text-black);
+}
+
+.btn-success:hover {
+    background-color: var(--course-accent-yellow);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px var(--course-border-black);
+    text-decoration: none;
+    color: var(--course-text-black);
+}
+
+.btn-secondary {
+    background-color: #999999;
+    color: var(--course-text-black);
+}
+
+.btn-secondary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 1px 1px 0px var(--course-border-black);
+}
+
+/* ===== INSTRUCTOR INFO ===== */
+.instructor-info {
+    display: flex;
+    align-items: center;
+    background-color: var(--course-window-bg);
+    padding: 20px;
+    border: 2px solid var(--course-border-black);
+    box-shadow: 3px 3px 0px var(--course-border-black);
+    gap: 20px;
+    position: relative;
+}
+
+.instructor-info::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--course-accent-yellow);
+    border-bottom: 1px solid var(--course-border-black);
+    border-right: 1px solid var(--course-border-black);
+    padding: 2px 6px;
+    font-weight: bold;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.instructor-avatar {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 3px solid var(--course-border-black);
+    flex-shrink: 0;
+    background-color: var(--course-window-bg);
+    padding: 3px;
+}
+
+.instructor-details h5 {
+    color: var(--course-text-black);
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.instructor-details p {
+    margin: 4px 0;
+    color: var(--course-text-black);
+    font-size: 12px;
+    font-weight: bold;
+    background-color: var(--course-accent-green);
+    padding: 4px 8px;
+    border: 1px solid var(--course-border-black);
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+

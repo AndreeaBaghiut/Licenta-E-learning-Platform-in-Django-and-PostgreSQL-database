@@ -1,0 +1,178 @@
+{% load static %}
+
+{% block content %}
+
+{% block header %}
+    {% if is_student %}
+        {% include 'student_header.html' %}
+    {% else %}
+        {% include 'visitor_header.html' %}
+    {% endif %}
+{% endblock %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'user/css/terms.css' %}">
+</head>
+<div class="legal-container">
+    <div class="legal-content">
+        <h1>Termeni și Condiții & Politica de Confidențialitate</h1>
+        
+        <div class="toc">
+            <h3>Cuprins:</h3>
+            <ul>
+                <li><a href="#terms">Termeni și Condiții</a></li>
+                <li><a href="#privacy">Politica de Confidențialitate</a></li>
+            </ul>
+        </div>
+        
+        <div id="terms">
+            <h2>TERMENI ȘI CONDIȚII</h2>
+            
+            <section>
+                <h3>1. INTRODUCERE</h3>
+                <p>Acești Termeni și Condiții reglementează utilizarea platformei educaționale COD. Prin crearea unui cont și utilizarea platformei, acceptați să respectați acești Termeni și Condiții. Vă rugăm să citiți cu atenție înainte de a utiliza platforma.</p>
+            </section>
+            
+            <section>
+                <h3>2. DEFINIȚII</h3>
+                <p><strong>Platforma</strong> se referă la COD, inclusiv toate funcționalitățile și serviciile oferite.</p>
+                <p><strong>Utilizator</strong> se referă la orice persoană care creează un cont pe platformă.</p>
+                <p><strong>Student</strong> se referă la un utilizator care se înregistrează cu scopul de a accesa și participa la cursuri și materiale educaționale.</p>
+                <p><strong>Profesor</strong> se referă la un utilizator care se înregistrează cu scopul de a crea și gestiona conținut educațional.</p>
+                <p><strong>Conținut</strong> se referă la orice materiale, inclusiv dar fără a se limita la texte, imagini, videoclipuri, exerciții, publicații care sunt încărcate, partajate sau create pe platformă.</p>
+            </section>
+            
+            <section>
+                <h3>3. ÎNREGISTRARE ȘI CONT</h3>
+                <p>3.1. Pentru a utiliza platforma, trebuie să vă înregistrați și să creați un cont, furnizând informațiile solicitate în formularul de înregistrare.</p>
+                <p>3.2. Sunteți responsabili pentru păstrarea confidențialității datelor de autentificare și pentru toate activitățile care au loc în contul dvs.</p>
+                <p>3.3. Trebuie să ne informați imediat despre orice utilizare neautorizată a contului dvs. sau despre orice altă încălcare a securității.</p>
+                <p>3.4. Ne rezervăm dreptul de a suspenda sau închide contul dvs. în caz de încălcare a acestor Termeni și Condiții.</p>
+            </section>
+            
+            <section>
+                <h3>4. UTILIZAREA PLATFORMEI</h3>
+                <p>4.1. Utilizatorii se angajează să respecte toate legile aplicabile și să nu folosească platforma în scopuri ilegale sau neautorizate.</p>
+                <p>4.2. Studenții pot accesa materialele educaționale disponibile.</p>
+                <p>4.3. Profesorii pot crea și gestiona cursuri, pot evalua progresul studenților, crea exerciții și exemple de întrebări pentru interviuri.</p>
+                <p>4.4. Este interzisă utilizarea platformei pentru a hărțui, intimida sau discrimina alte persoane sau pentru a distribui conținut dăunător, ofensator sau ilegal.</p>
+            </section>
+            
+            <section>
+                <h3>5. CONȚINUT</h3>
+                <p>5.1. Profesorii sunt responsabili pentru conținutul pe care îl creează și îl distribuie pe platformă și garantează că dețin drepturile necesare pentru a utiliza și distribui acest conținut.</p>
+                <p>5.2. Ne rezervăm dreptul de a elimina orice conținut care încalcă acești Termeni și Condiții sau care este considerat dăunător, ofensator sau ilegal.</p>
+            </section>
+            
+            <section>
+                <h3>6. PROPRIETATE INTELECTUALĂ</h3>
+                <p>6.1. Nu aveți dreptul să reproduceți, distribuiți, modificați sau creați opere derivate bazate pe conținutul Platformei fără acordul nostru prealabil scris.</p>
+            </section>
+            
+            <section>
+                <h3>7. LIMITAREA RĂSPUNDERII</h3>
+                <p>7.1. Nu garantăm că platforma va fi disponibilă fără întreruperi sau erori, și nu ne asumăm răspunderea pentru daune directe, indirecte, incidentale, speciale sau consecințiale rezultate din utilizarea sau imposibilitatea utilizării Platformei.</p>
+            </section>
+            
+            <section>
+                <h3>8. MODIFICĂRI ALE TERMENILOR</h3>
+                <p>8.1. Ne rezervăm dreptul de a modifica acești Termeni și Condiții în orice moment. Modificările vor intra în vigoare imediat după publicarea lor pe platformă.</p>
+                <p>8.2. Utilizarea continuă a Platformei după publicarea modificărilor constituie acceptarea acestora.</p>
+            </section>
+            
+            <section>
+                <h3>9. LEGEA APLICABILĂ</h3>
+                <p>9.1. Acești Termeni și Condiții sunt guvernați și interpretați în conformitate cu legislația din România.</p>
+            </section>
+        </div>
+        
+        <div id="privacy">
+            <h2>POLITICA DE CONFIDENȚIALITATE</h2>
+            
+            <section>
+                <h3>1. INTRODUCERE</h3>
+                <p>Această Politică de Confidențialitate explică modul în care COD colectează, utilizează și protejează informațiile personale ale utilizatorilor noștri. Ne angajăm să respectăm confidențialitatea și să protejăm datele personale în conformitate cu Regulamentul General privind Protecția Datelor (GDPR) și alte legi aplicabile privind protecția datelor.</p>
+            </section>
+            
+            <section>
+                <h3>2. INFORMAȚIILE PE CARE LE COLECTĂM</h3>
+                <p>2.1. <strong>Informații de înregistrare</strong>: Când vă înregistrați pe Platformă, colectăm următoarele informații:</p>
+                <ul>
+                    <li>Pentru Studenți: nume de utilizator, adresă de email, parolă, țară, ocupație, nivel de cunoștințe IT.</li>
+                    <li>Pentru Profesori: nume, prenume, adresă de email, parolă, țară, domenii de expertiză, titlu academic, cv.</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>3. CUM UTILIZĂM INFORMAȚIILE</h3>
+                <p>3.1. Utilizăm informațiile personale pentru:</p>
+                <ul>
+                    <li>Crearea și gestionarea contului dvs.</li>
+                    <li>Personalizarea experienței de învățare.</li>
+                    <li>Comunicarea cu dvs. despre Platformă și serviciile noastre.</li>
+                    <li>Îmbunătățirea și dezvoltarea Platformei.</li>
+                    <li>Rezolvarea disputelor și depanarea problemelor.</li>
+                    <li>Respectarea obligațiilor legale.</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h3>4. COOKIE-URI</h3>
+                <p>4.1. Site-ul nostru utilizează doar cookie-uri esențiale pentru funcționarea corespunzătoare a Platformei, cum ar fi cookie-urile de sesiune pentru autentificare.</p>
+                <p>4.2. Nu utilizăm cookie-uri pentru tracking, analiză sau publicitate.</p>
+                <p>4.3. Platforma noastră utilizează Google reCAPTCHA pentru a preveni abuzurile automatizate. Acest serviciu poate folosi cookie-uri conform <a href="https://policies.google.com/privacy" target="_blank">Politicii de Confidențialitate Google</a>.</p>
+            </section>
+            
+            <section>
+                <h3>5. PARTAJAREA INFORMAȚIILOR</h3>
+                <p>5.1. Nu vindem, nu închiriem și nu partajăm informațiile dvs. personale cu terțe părți în scopuri de marketing.</p>
+            </section>
+            
+            <section>
+                <h3>6. DREPTURILE DVS.</h3>
+                <p>6.1. În conformitate cu GDPR și alte legi aplicabile, aveți următoarele drepturi:</p>
+                <ul>
+                    <li>Dreptul de a accesa informațiile dvs. personale.</li>
+                    <li>Dreptul de a solicita rectificarea informațiilor inexacte.</li>
+                    <li>Dreptul de a solicita ștergerea informațiilor dvs. personale.</li>
+                    <li>Dreptul de a vă opune prelucrării informațiilor dvs.</li>
+                    <li>Dreptul de a retrage consimțământul în orice moment.</li>
+                </ul>
+                <p>6.2. Pentru a vă exercita oricare dintre aceste drepturi, vă rugăm să ne contactați la adresaTest@gmail.com.</p>
+            </section>
+            
+            <section>
+                <h3>7. SECURITATEA DATELOR</h3>
+                <p>7.1. Implementăm măsuri tehnice și organizatorice adecvate pentru a proteja informațiile dvs. personale împotriva accesului neautorizat, pierderii sau deteriorării.</p>
+            </section>
+            
+            <section>
+                <h3>8. PĂSTRAREA DATELOR</h3>
+                <p>8.1. Păstrăm informațiile dvs. personale atât timp cât este necesar pentru a vă furniza serviciile solicitate și pentru a respecta obligațiile noastre legale.</p>
+                <p>8.2. După închiderea contului dvs., informațiile dumneavoastră sunt șterse automat.</p>
+            </section>
+            
+            <section>
+                <h3>9. MODIFICĂRI ALE POLITICII DE CONFIDENȚIALITATE</h3>
+                <p>9.1. Ne rezervăm dreptul de a modifica această Politică de Confidențialitate în orice moment. Modificările vor intra în vigoare imediat după publicarea lor pe platformă.</p>
+                <p>9.2. Vă încurajăm să revizuiți periodic această Politică pentru a fi informați despre modul în care protejăm informațiile dvs.</p>
+            </section>
+        </div>
+        
+        <section>
+            <h2>CONTACT</h2>
+            <p>Pentru orice întrebări sau preocupări referitoare la acești Termeni și Condiții sau la Politica de Confidențialitate, vă rugăm să ne contactați la adresaTest@gmail.com.</p>
+        </section>
+        
+        <div class="last-updated">
+            <p>Ultima actualizare: 07.04.2025</p>
+        </div>
+        
+    </div>
+</div>
+
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock %}

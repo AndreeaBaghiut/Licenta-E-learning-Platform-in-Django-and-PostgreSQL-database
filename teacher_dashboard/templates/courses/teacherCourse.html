@@ -1,0 +1,97 @@
+{% extends 'teacher_header.html' %}
+{% load static %}
+
+{% block title %}
+    Editează curs: {{ course.name }}
+{% endblock %}
+
+{% block content %}
+    {% block head %}
+        <meta name="csrf-token" content="{{ csrf_token }}">
+        <link rel="stylesheet" href="{% static 'teacherDashboard/css/addCourse.css' %}">
+        <script src="{% static 'teacherDashboard/js/teacherCourse.js' %}" defer></script>
+        <script src="{% static 'teacherDashboard/js/addCourse.js' %}" defer></script>
+    {% endblock %}
+
+    <div id="course-container" data-course-id="{{ course.id }}" class="course-container">
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- formular pentru imaginea de curs -->
+            <div class="image-section">
+                <img id="course-image-preview" src="
+                        {% if course.course_image %}{{ course.course_image.url }}{% else %}{% static 'teacherDashboard/images/img.jpeg' %}{% endif %}"
+                     alt="Course Image" class="course-image-preview"
+                     onclick="document.getElementById('course_image').click();">
+            </div>
+
+            <input type="file" name="course_image" id="course_image" class="form-control" accept="image/*"
+                   onchange="previewImage()" style="display: none;">
+
+            <!-- formular pentru titlu -->
+            <div class="form-group title-section">
+                <label for="name">Titlu curs:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Editează titlu"
+                       value="{{ course.name }}" onclick="this.select();">
+            </div>
+
+            <!-- formular pentru descriere -->
+            <div class="form-group">
+                <label for="description">Descriere curs:</label>
+                <textarea class="form-control" id="description" name="description" rows="5"
+                          placeholder="Editează descrierea cursului">{{ course.description }}</textarea>
+            </div>
+        
+            <!-- lista de categorii selectate -->
+            <div class="form-group">
+                <label for="categories">Categorii:</label>
+                
+                <!-- categoriile selectate -->
+                <div id="selected-categories" class="selected-categories-display">
+                    {% for category in course_categories %}
+                        <span class="selected-category" data-id="{{ category.id }}">{{ category.name }}</span>
+                    {% endfor %}
+                </div>
+                
+                <div id="selected-category-inputs">
+                    {% for category in course_categories %}
+                        <input type="hidden" name="categories" value="{{ category.id }}">
+                    {% endfor %}
+                </div>
+                
+                <!-- lista de categorii -->
+                <div class="category-section">
+                    <h5>Selectează categoriile:</h5>
+                    <div id="category-list" class="category-list-permanent"></div>
+                </div>
+            </div>
+
+            <!---------- butoane ------------>
+            <div class="form-group submit-btn">
+                <div class="text-center">
+                    <button type="button" id="save-course-button" class="btn btn-success btn-lg">
+                        Actualizează curs
+                    </button>
+
+                    <a href="{% url 'edit_course' course.id %}" class="btn btn-info btn-lg">
+                        Editează conținut curs
+                    </a>
+
+                    <button type="submit" form="delete-form" class="btn btn-danger btn-lg"
+                            onclick="return confirm('Ești sigur că vrei să ștergi cursul?');">
+                        Șterge curs
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <form id="delete-form" method="post" action="{% url 'delete_course' course.id %}" style="display: none;">
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}

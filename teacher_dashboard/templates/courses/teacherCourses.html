@@ -1,0 +1,58 @@
+{% extends 'teacher_header.html' %}
+{% load static %}
+
+{% block title %}
+    Teacher Courses
+{% endblock %}
+
+{% block content %}
+    {% block head %}
+        <link rel="stylesheet" href="{% static 'teacherDashboard/css/teacherCourses.css' %}">
+    {% endblock %}
+
+<div class="page-container">
+    <div class="container">
+        <h2>Cursurile create</h2>
+        <div class="courses-grid">
+            <!-- adăugare curs -->
+            <div class="course-card add-course-card">
+                <div class="course-header add-header">
+                    <span class="course-window-title">ADD-COURSE.EXE</span>
+                    <div class="window-controls">
+                        <span class="window-button">_</span>
+                        <span class="window-button">□</span>
+                        <span class="window-button">×</span>
+                    </div>
+                </div>
+                <div class="card-content add-content">
+                    <i class="fas fa-plus add-icon"></i>
+                    <h5 class="course-title">Adaugă un curs nou</h5>
+                    <a href="{% url 'add_course' %}" class="btn btn-success">Adaugă curs</a>
+                </div>
+            </div>
+            
+            <!-- Cursurile existente -->
+            {% for course in courses %}
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-window-title">COURSE.EXE</span>
+                        <div class="window-controls">
+                            <span class="window-button">_</span>
+                            <span class="window-button">□</span>
+                            <span class="window-button">×</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h5 class="course-title">{{ course.name }}</h5>
+                        <a href="{% url 'teacher_course' course.id %}" class="btn btn-primary">Vezi detalii</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock %}

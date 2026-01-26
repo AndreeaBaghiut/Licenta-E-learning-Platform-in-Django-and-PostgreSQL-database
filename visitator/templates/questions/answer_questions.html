@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Răspunde la întrebări</title>
+    <link rel="stylesheet" href="{% static 'templates/css/footer1.css' %}">
+    <link rel="stylesheet" href="{% static 'visitator/css/answer_questions.css' %}">
+    {% endblock %}
+</head>
+<body>
+
+{% block header %}
+    {% if is_student %}
+        {% include 'student_header.html' %}
+    {% else %}
+        {% include 'visitor_header.html' %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+<div class="centered-container" id="main-container-ex">
+    <div id="step-1">
+        <h4>Selectează una sau mai multe categorii</h4>
+        <div id="category-list"></div>
+        <div id="selected-categories"></div>
+        <div id="selected-category-inputs" style="display: none;"></div>
+        <button onclick="showQuestion()">Next</button>
+    </div>
+
+    <div id="step-2" style="display: none;">
+        <button onclick="showCategories()" class="back-button">Back</button>
+        
+        <h4>Întrebare:</h4>
+        
+        <div class="flip-card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div id="question-text"></div>
+                        <button onclick="flipCard()" class="flip-button" title="Arată răspunsul"></button>
+                    </div>
+                    <div class="flip-card-back">
+                        <div id="answer-text"></div>
+                        <button onclick="flipCard()" class="flip-button" title="Arată întrebarea"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="next-question-container">
+            <button onclick="loadRandomQuestion()" class="next-question-button" title="Altă întrebare"></button>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'visitator/js/answer_questions.js'%}" defer></script>
+<script src="{% static 'teacherDashboard/js/addCourse.js'%}" defer></script>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+
+{% endblock%}
+</body>
+</html>

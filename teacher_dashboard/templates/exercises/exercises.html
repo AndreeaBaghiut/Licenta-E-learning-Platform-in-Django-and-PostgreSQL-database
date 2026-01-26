@@ -1,0 +1,56 @@
+{% extends 'teacher_header.html' %}
+{% load static %}
+
+{% block title %}
+    Teacher Dashboard - Exercises
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'teacherDashboard/css/exercises.css' %}">
+{% endblock %}
+
+<div class="page-container">
+    <div class="container">
+        <h2>Exercițiile tale</h2>
+        <div class="exercises-grid">
+            
+            <div class="exercise-card add-exercise-card">
+                <div class="card-content">
+                    <h5 class="exercise-title">Adaugă un nou exercițiu</h5>
+                    <a href="{% url 'add_independent_exercise' %}" class="btn btn-success">Adaugă exercițiu</a>
+                </div>
+            </div>
+
+            {% for exercise in exercises %}
+                <div class="exercise-card">
+                    <div class="card-content">
+                        <h5 class="exercise-title">{{ exercise.title }} 
+                            <small class="difficulty-badge">({{ exercise.get_difficulty_display }})</small>
+                        </h5>
+                        <p class="exercise-description">{{ exercise.description|truncatewords:25 }}</p>
+                        <div class="exercise-details">
+                            <p><strong>Limbaj:</strong> {{ exercise.get_programming_language_display }}</p>
+                            <p><strong>Creat la:</strong> {{ exercise.created_at|date:"d-m-Y H:i" }}</p>
+                            <p><strong>Publicat:</strong> {{ exercise.is_published|yesno:"Da,Nu" }}</p>
+                        </div>
+                        <a href="{% url 'edit_exercise' exercise.id %}" class="btn btn-primary">Editează</a> 
+                    </div>
+                </div>
+            {% empty %}
+                <div class="empty-state">
+                    <div class="empty-message">
+                        Nu ai încă niciun exercițiu creat. Folosește cardul de mai sus pentru a crea primul tău exercițiu!
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock %}

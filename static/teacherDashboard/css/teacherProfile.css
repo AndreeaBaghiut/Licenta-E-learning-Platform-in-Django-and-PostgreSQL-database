@@ -1,0 +1,66 @@
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px; 
+    max-width: 90%;
+    text-align: center;
+    position: relative;
+}
+
+
+.password-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.password-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.password-group input {
+    width: 65%; 
+}
+
+.forgot-password-link {
+    font-size: 14px;
+    text-align: right;
+    color: #007bff; 
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.close-button:hover {
+    color: #ff0000;
+}
+
+

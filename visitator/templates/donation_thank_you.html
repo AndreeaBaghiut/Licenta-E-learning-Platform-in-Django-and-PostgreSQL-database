@@ -1,0 +1,32 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulțumiri - Donație realizată</title>
+    <link rel="stylesheet" href="{% static 'visitator/css/donate.css' %}">
+</head>
+<body>
+
+{% if is_student %}
+{% include 'student_header.html' %}
+{% else %}
+{% include 'visitor_header.html' %}
+{% endif %}
+
+<main class="thank-you-page">
+    <div class="thank-you-container">
+        <div class="thank-you-content">
+            <h1>Mulțumim pentru donația ta!</h1>
+            <p>Donația ta contribuie la menținerea platformei noastre și la dezvoltarea de conținut educațional nou. Impactul tău face diferența în misiunea noastră de a oferi educație de calitate pentru toți.</p>
+        </div>
+    </div>
+</main>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+</body>
+</html>

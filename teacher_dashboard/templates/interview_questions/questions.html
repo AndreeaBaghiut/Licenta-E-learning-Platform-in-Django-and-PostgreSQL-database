@@ -1,0 +1,51 @@
+{% extends 'teacher_header.html' %}
+{% load static %}
+
+{% block title %}
+    Întrebări de interviuri
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'teacherDashboard/css/questions.css' %}">
+{% endblock %}
+
+<div class="page-container">
+    <div class="container">
+        <h2>Întrebările tale</h2>
+        <div class="questions-grid">
+            {% for question in questions %}
+                <div class="question-card">
+                    <div class="card-content">
+                        <h5 class="question-title">{{ question.question }}</h5>
+                        <p class="question-answer">{{ question.answer|truncatewords:25 }}</p>
+                        <div class="question-details">
+                            <p><strong>Creată la:</strong> {{ question.created_at|date:"d-m-Y H:i" }}</p>
+                            <p><strong>Publicat:</strong> {{ question.is_published|yesno:"Da,Nu" }}</p>
+                        </div>
+                        <a href="{% url 'edit_question' question.id %}" class="btn btn-primary">Editează</a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="empty-state">
+                    <div class="empty-message">
+                        Nu ai încă nicio întrebare adăugată.
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="question-card add-question-card">
+                <div class="card-content">
+                    <h5 class="question-title">Adaugă o nouă întrebare</h5>
+                    <a href="{% url 'add_question' %}" class="btn btn-success">Adaugă întrebare</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock %}

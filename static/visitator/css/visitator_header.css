@@ -1,0 +1,183 @@
+:root {
+    --header-bg-main: #e8c4c4;
+    --header-window-bg: #ffffff;
+    --header-accent-pink: #d4a5a5;
+    --header-accent-purple: #c4a5c4;
+    --header-text-black: #000000;
+    --header-border-black: #000000;
+    --header-shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+html {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ===== NAVBAR ===== */
+.navbar-retro {
+    background: linear-gradient(135deg, var(--header-bg-main) 0%, var(--header-accent-purple) 100%);
+    height: 60px;
+    padding: 8px 20px;
+    border: 3px solid var(--header-border-black);
+    box-shadow: 
+        0px 3px 0px var(--header-border-black),
+        0px 6px 0px var(--header-shadow-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 6px);
+    z-index: 1000;
+    margin: 3px;
+    font-family: 'Courier New', monospace;
+}
+
+.navbar-brand-img-retro {
+    height: 35px; 
+    width: auto;
+    object-fit: contain;
+    margin-right: 10px;
+    filter: drop-shadow(3px 3px 0px #e8c4c4) drop-shadow(6px 6px 0px #d4a5a5);
+    transition: filter 0.2s ease;
+}
+
+.navbar-brand-retro {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: var(--header-window-bg);
+    padding: 8px 15px;
+    border: 2px solid var(--header-border-black);
+    box-shadow: 3px 3px 0px var(--header-border-black);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+}
+
+.navbar-brand-retro:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px var(--header-border-black);
+    background-color: #f0f0f0;
+    text-decoration: none;
+}
+
+.navbar-nav-retro {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}
+
+.nav-link-retro {
+    color: var(--header-text-black) !important;
+    padding: 8px 15px !important;
+    background-color: var(--header-window-bg);
+    border: 2px solid var(--header-border-black);
+    box-shadow: 2px 2px 0px var(--header-border-black);
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+}
+
+.nav-link-retro:hover {
+    color: var(--header-text-black) !important;
+    background-color: #f2e4a1;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--header-border-black);
+    text-decoration: none;
+}
+
+.login-register-btn-retro {
+    display: flex;
+    align-items: center;
+    background-color: var(--header-window-bg);
+    border: 2px solid var(--header-border-black);
+    box-shadow: 3px 3px 0px var(--header-border-black);
+    border-radius: 0;
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+}
+
+.login-register-btn-retro:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px var(--header-border-black);
+}
+
+.half-link-retro {
+    color: var(--header-text-black);
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.2s ease;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.half-link-retro:hover {
+    color: var(--header-text-black);
+    background-color: var(--header-accent-pink);
+    text-decoration: none;
+}
+
+.half-link-retro:last-child:hover {
+    background-color: var(--header-accent-purple);
+}
+
+.divider-retro {
+    width: 2px;
+    height: 30px;
+    background-color: var(--header-border-black);
+    margin: 0;
+}
+
+.container-fluid-retro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+}
+
+.nav-actions-retro {
+    display: flex;
+    align-items: center;
+}
+
+/* ===== STUDENT HEADER ===== */
+
+/* Button pentru profile dropdown */
+.btn-retro {
+    background-color: var(--header-window-bg) !important;
+    border: 2px solid var(--header-border-black) !important;
+    box-shadow: 3px 3px 0px var(--header-border-black) !important;
+    transition: all 0.2s ease !important;
+    margin-top: 8px;
+    padding: 5px 10px !important;
+}
+
+.btn-retro:hover {
+    background-color: var(--header-accent-pink) !important;
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px var(--header-border-black) !important;
+}
+
+/* Profile image styling */
+.profile-img-retro {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid var(--header-border-black);
+    object-fit: cover;
+}

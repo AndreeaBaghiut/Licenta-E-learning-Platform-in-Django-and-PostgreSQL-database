@@ -1,0 +1,42 @@
+{% extends "teacher_header.html" %}
+{% load static %}
+{% block content %}
+
+<head>
+<link rel="stylesheet" href="{% static 'user/css/userProfile.css' %}">
+</head>
+
+<div class="profile-photo">
+    <img src="{{ teacher.profile_picture.url }}" alt="Profile Photo" class="profile-circle" width="200" height="200" onclick="changeProfilePhoto()"><br>
+</div>
+
+<div class="profile-container">
+    <div class="profile-text">
+        <h5>Informații despre profil</h5>
+    </div>
+
+    <div class="account-info">
+        <div class="info-row">
+            <p><strong>Nume și prenume:</strong> {{ teacher.name }} {{ teacher.surname }}</p>
+        </div>
+        <div class="info-row">
+            <p><strong>Email:</strong> {{ teacher.email }}</p>
+        </div>
+        <div class="password-section">
+            <p><strong>Parolă:</strong></p>
+            <input type="password" class="password-field" value="••••••••" readonly />
+            <button class="btn btn-link" onclick="openChangePasswordModal()">Schimbă parola</button>
+        </div>
+        <div class="delete-section">
+            <button class="btn btn-danger" onclick="openDeleteAccountModal()">Șterge contul</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modalele -->
+{% include 'profile/change_password.html' %}
+{% include 'profile/delete_account.html' %}
+{% include 'profile/change_pf.html' %}
+
+<script src="{% static 'user/js/userProfile.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "codemirror": "^5.65.18",
+    "quill": "^2.0.2",
+    "quill-image-resize-module": "^3.0.0",
+    "quill-resize-image": "^1.0.5",
+    "quill-resize-module": "^1.2.4",
+    "quill-video-resize-module": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/quill": "^2.0.14"
+  }
+}

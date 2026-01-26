@@ -1,0 +1,11 @@
+<!-- Modal pentru confirmarea ștergerii contului -->
+<div id="delete-account-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h3>Ești sigur?</h3>
+        <p>Dacă îți ștergi contul, o să pierzi toate informațiile salvate și această acțiune nu poate fi anulată.</p>
+        <form method="post" action="{{ delete_account_url }}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirmă ștergerea</button>
+        </form>
+    </div>
+</div>

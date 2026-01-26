@@ -1,0 +1,72 @@
+{% extends 'visitator/visitor_header.html' %}
+{% block title %}Login{% endblock %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'user/css/login.css' %}">
+</head>
+
+<div class="login-container">
+    <div class="content-section">
+        <form method="POST" class="login-form">
+            {% csrf_token %}
+            <div class="form-header">
+                <h2>Login</h2>
+            </div>
+            
+            {% if messages %}
+                <div class="messages-container">
+                    {% for message in messages %}
+                        <div class="message message-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            <!-- Redare automată a tuturor câmpurilor din form -->
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="field-errors">
+                            {% for error in field.errors %}
+                                <span class="error-text">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            
+            <div class="form-submit">
+                <button class="btn-login" type="submit">Login</button>
+            </div>
+        </form>
+        
+        <div class="form-footer">
+            <div class="register-link">
+                Nu ai încă cont? <a href="{% url 'teacher_registration' %}">Înregistrează-te</a>
+            </div>
+            <div class="forgot-link">
+                <a href="{% url 'forgot_password' %}">Ai uitat parola?</a>
+            </div>
+        </div>
+    </div>
+    
+    {% if messages %}
+        <div class="messages-container bottom-messages">
+            {% for message in messages %}
+                <div class="message message-error">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock content %}

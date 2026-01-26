@@ -1,0 +1,380 @@
+:root {
+    --retro-bg-main: #f2e4a1;
+    --retro-bg-secondary: #e8c4c4;
+    --retro-accent-pink: #d4a5a5;
+    --retro-accent-purple: #c4a5c4;
+    --retro-window-bg: #ffffff;
+    --retro-text-black: #000000;
+    --retro-border-black: #000000;
+    --retro-shadow-color: rgba(0, 0, 0, 0.3);
+    --retro-yellow: #f2e4a1;
+    --retro-danger: #ff6b6b;
+    --bg-beige: #f5f1e8;
+    --dot-pattern: #e8dcc6;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+
+    font-family: 'Courier New', monospace;
+}
+
+body {
+    display: block;  
+    padding-top: 80px !important; 
+    background-color: var(--bg-beige);
+    background-image: 
+        radial-gradient(circle at 25% 25%, var(--dot-pattern) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, var(--dot-pattern) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* ===== PROFILE LAYOUT ===== */
+.profile-photo {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.profile-circle {
+    border-radius: 50%;
+    border: 4px solid var(--retro-border-black);
+    box-shadow: 
+        4px 4px 0px var(--retro-border-black),
+        8px 8px 0px var(--retro-shadow-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: var(--retro-window-bg);
+    padding: 5px;
+}
+
+.profile-circle:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 
+        6px 6px 0px var(--retro-border-black),
+        10px 10px 0px var(--retro-shadow-color);
+}
+
+.profile-container {
+    background-color: var(--retro-window-bg);
+    border: 3px solid var(--retro-border-black);
+    box-shadow: 
+        4px 4px 0px var(--retro-border-black),
+        8px 8px 0px var(--retro-shadow-color);
+    padding: 30px;
+    margin: 30px auto;  
+    font-size: 14px;
+    text-align: center;
+    width: 90%;  
+    max-width: 600px;
+    font-family: 'Courier New', monospace;
+}
+
+.profile-text {
+    margin-bottom: 25px;
+}
+
+.profile-text h5 {
+    color: var(--retro-text-black);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 16px;
+    margin: 0;
+    border-bottom: 2px solid var(--retro-border-black);
+    padding-bottom: 10px;
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-row {
+    width: 100%;
+    max-width: 400px; 
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto; 
+    padding: 12px 15px;
+    background-color: var(--retro-yellow);
+    border: 2px solid var(--retro-border-black);
+    box-shadow: 2px 2px 0px var(--retro-border-black);
+}
+
+.info-row p {
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+}
+
+.password-section {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 15px;
+    background-color: var(--retro-accent-pink);
+    border: 2px solid var(--retro-border-black);
+    box-shadow: 2px 2px 0px var(--retro-border-black);
+}
+
+.password-section p {
+    margin: 0; 
+    padding: 0; 
+    background: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+}
+
+.delete-section {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto 0;
+    text-align: center;
+}
+
+.password-field {
+    width: 120px;
+    max-width: 120px;
+    padding: 6px 8px;
+    margin: 0;
+    border: 2px solid var(--retro-border-black);
+    background-color: var(--retro-window-bg);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-align: center;
+    font-size: 12px;
+    box-shadow: 1px 1px 0px var(--retro-border-black);
+}
+
+/* ===== BUTTONS ===== */
+.btn-link {
+    background-color: var(--retro-window-bg);
+    border: 2px solid var(--retro-border-black);
+    box-shadow: 1px 1px 0px var(--retro-border-black);
+    color: var(--retro-text-black);
+    text-decoration: none;
+    cursor: pointer;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    font-family: 'Courier New', monospace;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-link:hover {
+    background-color: var(--retro-accent-purple);
+    transform: translate(-1px, -1px);
+    box-shadow: 2px 2px 0px var(--retro-border-black);
+}
+
+.btn-danger {
+    background-color: var(--retro-danger);
+    color: var(--retro-window-bg);
+    border: 2px solid var(--retro-border-black);
+    box-shadow: 2px 2px 0px var(--retro-border-black);
+    padding: 12px 25px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+    background-color: #ff5252;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--retro-border-black);
+}
+
+/* ===== MODALS ===== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--retro-window-bg);
+    border: 3px solid var(--retro-border-black);
+    box-shadow: 
+        4px 4px 0px var(--retro-border-black),
+        8px 8px 0px var(--retro-shadow-color);
+    width: 400px;
+    max-width: 90%;
+    padding: 30px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+.modal-content h2,
+.modal-content h5 {
+    color: var(--retro-text-black);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--retro-border-black);
+    padding-bottom: 10px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 2px solid var(--retro-border-black);
+    background-color: var(--retro-window-bg);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    box-shadow: 1px 1px 0px var(--retro-border-black);
+    box-sizing: border-box;
+}
+
+.modal-content .btn {
+    background-color: var(--retro-accent-purple);
+    color: var(--retro-text-black);
+    border: 2px solid var(--retro-border-black);
+    box-shadow: 2px 2px 0px var(--retro-border-black);
+    padding: 12px 20px;
+    margin: 15px 5px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.modal-content .btn:hover {
+    background-color: var(--retro-accent-pink);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--retro-border-black);
+}
+
+.forgot-password-link {
+    color: var(--retro-text-black);
+    text-decoration: underline;
+    cursor: pointer;
+    display: block;
+    margin-top: 15px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    font-size: 11px;
+}
+
+.forgot-password-link:hover {
+    color: var(--retro-accent-purple);
+}
+
+/* ===== FORMS ===== */
+form {
+    margin: 0 auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--retro-window-bg);
+    border: 3px solid var(--retro-border-black);
+    box-shadow: 
+        4px 4px 0px var(--retro-border-black),
+        8px 8px 0px var(--retro-shadow-color);
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+
+h2, h5 {
+    color: var(--retro-text-black);
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--retro-border-black);
+    padding-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--retro-text-black);
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid var(--retro-border-black);
+    background-color: var(--retro-window-bg);
+    color: var(--retro-text-black);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    box-shadow: 1px 1px 0px var(--retro-border-black);
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--retro-accent-purple);
+    color: var(--retro-text-black);
+    border: 2px solid var(--retro-border-black);
+    box-shadow: 2px 2px 0px var(--retro-border-black);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--retro-accent-pink);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--retro-border-black);
+}
+
+p {
+    color: var(--retro-text-black);
+    font-family: 'Courier New', monospace;
+}
+

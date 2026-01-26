@@ -1,0 +1,223 @@
+/* ===== VARIABILE ===== */
+:root {
+    --bg-beige: #f4f0e8;
+    --window-bg: #ffffff;
+    --accent-pink: #e8c4c4;
+    --accent-purple: #d4b5d4;
+    --accent-green: #c4e8c4;
+    --accent-yellow: #f2e4a1;
+    --text-black: #000000;
+    --border-black: #000000;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --dot-pattern: #e0e0e0;
+}
+
+body {
+    background-color: var(--bg-beige);
+    background-image: 
+        radial-gradient(circle at 25% 25%, var(--dot-pattern) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, var(--dot-pattern) 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: 'Courier New', monospace;
+    color: var(--text-black);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.page-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* ===== LAYOUT PRINCIPAL ===== */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+}
+
+/* ===== SECȚIUNEA DE BINE VENIT ===== */
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 40px;
+}
+
+.welcome-container {
+    background-color: var(--accent-pink);
+    border: 3px solid var(--border-black);
+    box-shadow: 6px 6px 0px var(--border-black);
+    padding: 30px;
+    margin-left: 80px;
+}
+
+h2 {
+    color: var(--text-black);
+    font-weight: bold;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0px var(--window-bg);
+    margin-top: 0;
+}
+
+.welcome-text {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--text-black);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0;
+}
+
+.welcome-description {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--text-black);
+    margin: 0;
+}
+
+/* ===== SECȚIUNEA TO-DO ===== */
+.todo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-window {
+    background-color: var(--window-bg);
+    border: 4px solid var(--border-black);
+    box-shadow: 8px 8px 0px var(--border-black);
+    width: 100%;
+    max-width: 500px;
+}
+
+.window-header {
+    background-color: var(--accent-purple); 
+    color: var(--text-black); 
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--border-black);
+}
+
+.window-title {
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.window-button {
+    background-color: var(--window-bg);
+    color: var(--text-black);
+    padding: 4px 10px;
+    border: 2px solid var(--border-black);
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.window-button:hover {
+    background-color: #d4d4d4;
+}
+
+.window-content {
+    padding: 30px;
+}
+
+/* ===== GRID ===== */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+}
+
+.option-item {
+    background-color: var(--window-bg);
+    border: 3px solid var(--border-black);
+    padding: 30px 20px;
+    text-decoration: none;
+    color: var(--text-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.2s ease;
+    box-shadow: 4px 4px 0px var(--border-black);
+    min-height: 140px;
+    justify-content: center;
+}
+
+.option-item:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--border-black);
+    text-decoration: none;
+    color: var(--text-black);
+}
+
+.courses-option {
+    background-color: var(--accent-pink);
+}
+
+.courses-option:hover {
+    background-color: #f0d4d4;
+}
+
+.exercises-option {
+    background-color: var(--accent-yellow);
+}
+
+.exercises-option:hover {
+    background-color: #f5e8b1;
+}
+
+.interviews-option {
+    background-color: var(--accent-green); 
+}
+
+.interviews-option:hover {
+    background-color: #d4f0d4;
+}
+
+.statistics-option {
+    background-color: var(--accent-purple); 
+}
+
+.statistics-option:hover {
+    background-color: #e0c5e0;
+}
+
+.option-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--text-black);
+    text-shadow: 2px 2px 0px var(--window-bg);
+}
+
+.option-text {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+}

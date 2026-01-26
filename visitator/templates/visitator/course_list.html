@@ -1,0 +1,15 @@
+<!-- partial/course_list.html -->
+{% for course in all_courses %}
+    <div class="course-item">
+        <div class="course-list-item">
+            <div class="course-list-img-container">
+                <img src="{{ course.course_image.url }}" class="course-list-img" alt="{{ course.name }}">
+            </div>
+            <div class="course-list-content">
+                <h5 class="course-list-title">{{ course.name }}</h5>
+                <p class="course-list-desc">{{ course.description|truncatewords:20 }}</p>
+                <a href="{% url 'course_detail' course.id %}" class="view-details-btn">Vezi detalii</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}

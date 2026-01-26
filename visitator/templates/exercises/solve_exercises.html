@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    {% load static %}
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/ayu-mirage.min.css" integrity="sha512-83Qw5YjeKhwUh0sTjLweNX0/xqhfPAghTPNKP3W2VREm8waJe6rjrpGFN3zl9CMDoInarIjiAfNBE7p+NGPM7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Explore Courses</title>
+    <link rel="stylesheet" href="{% static 'visitator/css/exercises.css' %}">
+    <link rel="stylesheet" href="{% static 'templates/css/footer.css' %}">
+    {% endblock %}
+</head>
+<body>
+
+{% block header %}
+    {% if is_student %}
+        {% include 'student_header.html' %}
+    {% else %}
+        {% include 'visitor_header.html' %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+<div class="centered-container" id="main-container-ex">
+    <div id="step-1">
+        <h4>Selectează un limbaj de programare pe care vrei să îl exersezi</h4>
+        <div class="list-group">
+            {% for language in languages %}
+                <button class="list-group-item list-group-item-action" onclick="selectLanguage('{{ language|escapejs }}')">
+                    {{ language }}
+                </button>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="step-2" style="display: none;">
+        <h4>Selectează o dificultate</h4>
+        <div class="list-group">
+            {% for difficulty in difficulties %}
+                <button class="list-group-item list-group-item-action" onclick="selectDifficulty('{{ difficulty }}')">
+                    {{ difficulty }}
+                </button>
+            {% endfor %}
+        </div>
+        <button id="back-to-step-1" class="custom-btn custom-btn-secondary">Back</button>
+    </div>
+</div>
+
+<div id="step-3-container" style="display: none; position: relative;">
+    <button id="back-to-step-2" class="custom-btn custom-btn-secondary">Back</button>
+
+    <div id="step-3">
+        <div id="exercise-container">
+            <p id="exercise-title"></p>
+            <p id="exercise-description"></p>
+            <span id="reload-icon" onclick="loadExercise()" title="Încarcă alt exercițiu"></span>
+        </div>
+        <div id="solution-container">
+            <textarea id="id-reference-solution"></textarea><br>
+            <button type="submit" id="verify-answer" class="custom-btn custom-btn-light">Verifică soluția</button>
+        </div>
+    </div>
+</div>
+
+<div id="overlay"></div>
+
+<script src="{% static 'visitator/js/exercises.js'%}" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/python/python.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/clike/clike.min.js" defer></script>
+
+{% endblock %}
+</body>
+</html>

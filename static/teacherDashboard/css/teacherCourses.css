@@ -1,0 +1,200 @@
+:root {
+    --bg-beige: #f4f0e8;
+    --window-bg: #ffffff;
+    --accent-pink: #e8c4c4;
+    --accent-purple: #d4b5d4;
+    --accent-green: #c4e8c4;
+    --accent-yellow: #f2e4a1;
+    --text-black: #000000;
+    --border-black: #000000;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --dot-pattern: #e0e0e0;
+    --window-header-bg: #008080;
+}
+
+body {
+    background-color: var(--bg-beige);
+    background-image: 
+        radial-gradient(circle at 25% 25%, var(--dot-pattern) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, var(--dot-pattern) 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: 'Courier New', monospace;
+    color: var(--text-black);
+    margin: 0;
+    padding: 0;
+}
+
+.page-container {
+    padding-top: 100px;
+    min-height: calc(100vh - 80px);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.container {
+    width: 100%;
+}
+
+/* ===== HEADER ===== */
+h2 {
+    color: var(--text-black);
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    background-color: var(--accent-yellow);
+    padding: 20px 30px;
+    border: 3px solid var(--border-black);
+    box-shadow: 6px 6px 0px var(--border-black);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-shadow: 2px 2px 0px var(--window-bg);
+    margin-left: 40px;
+}
+
+/* ===== COURSES GRID ===== */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* ===== COURSE CARDS ===== */
+.course-card {
+    background-color: var(--window-bg);
+    border: 4px solid var(--border-black);
+    box-shadow: 6px 6px 0px var(--border-black);
+    transition: all 0.2s ease;
+    overflow: hidden;
+}
+
+.course-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--border-black);
+}
+
+/* ===== WINDOW HEADER ===== */
+.course-header {
+    background-color: var(--accent-purple);
+    color: var(--text-black);
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--border-black);
+}
+
+.add-header {
+    background-color: var(--accent-green);
+}
+
+.course-window-title {
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.window-button {
+    background-color: var(--window-bg);
+    color: var(--text-black);
+    padding: 2px 6px;
+    border: 1px solid var(--border-black);
+    font-weight: bold;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.window-button:hover {
+    background-color: #d4d4d4;
+}
+
+/* ===== CARD CONTENT ===== */
+.card-content {
+    padding: 30px;
+    background-color: var(--window-bg);
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.add-content {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 3px dashed var(--border-black);
+    background-color: #f9f9f9;
+    margin: 10px;
+    min-height: 120px;
+}
+
+.course-title {
+    color: var(--text-black);
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+}
+
+.add-icon {
+    font-size: 2rem;
+    color: var(--text-black);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0px var(--accent-green);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    border: 3px solid var(--border-black);
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 3px 3px 0px var(--border-black);
+    font-family: 'Courier New', monospace;
+}
+
+.btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px var(--border-black);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--accent-pink);
+    color: var(--text-black);
+}
+
+.btn-primary:hover {
+    background-color: #f0d4d4;
+    color: var(--text-black);
+}
+
+.btn-success {
+    background-color: var(--accent-green);
+    color: var(--text-black);
+}
+
+.btn-success:hover {
+    background-color: #d4f0d4;
+    color: var(--text-black);
+}
+

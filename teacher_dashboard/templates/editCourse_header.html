@@ -1,0 +1,23 @@
+{% extends "teacher_header.html" %}
+
+{% block header %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Doar imaginea și dropdown-ul profilului -->
+        <div class="d-flex align-items-center ms-auto">
+            <img src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}/media/profile_pictures/poza.jpeg{% endif %}" alt="Profile" class="rounded-circle" width="40" height="40">
+            <div class="dropdown ms-2">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ user.username }}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{% url 'teacher_dashboard' %}">Dashboard</a></li>
+                    <li><a class="dropdown-item" href="{% url 'teacherProfile' %}">See Your Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'teacher_logout' %}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+{% endblock %}

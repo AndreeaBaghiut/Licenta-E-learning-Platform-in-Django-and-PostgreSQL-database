@@ -1,0 +1,500 @@
+:root {
+    --bg-beige: #f4f0e8;
+    --window-bg: #ffffff;
+    --accent-pink: #e8c4c4;
+    --accent-purple: #d4b5d4;
+    --accent-green: #c4e8c4;
+    --accent-yellow: #f2e4a1;
+    --accent-blue: #c4c4e8;
+    --text-black: #000000;
+    --border-black: #000000;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --dot-pattern: #e0e0e0;
+}
+
+body {
+    background-color: var(--bg-beige);
+    background-image: 
+        radial-gradient(circle at 25% 25%, var(--dot-pattern) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, var(--dot-pattern) 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: 'Courier New', monospace;
+    color: var(--text-black);
+    margin: 0;
+    padding: 0; 
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    height: 70px; 
+}
+
+#middle-section > div:empty,
+#middle-section > .alert:empty,
+#middle-section > *:not(#quiz-container):not(.subchapter-content):not(h3):not(.btn):not(p):empty {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+#middle-section > div:not(#quiz-container):not(.subchapter-content) {
+    min-height: 0;
+}
+
+#middle-section > div:not(#quiz-container):not(.subchapter-content):empty {
+    display: none !important;
+}
+.content-container {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 220px);
+    margin: 0;
+    padding: 0;
+    margin-top: 70px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    align-items: flex-start;
+}
+
+/* ===== SIDEBAR ===== */
+.left {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    
+    background-color: var(--window-bg);
+    border: 3px solid var(--border-black);
+    box-shadow: 
+        3px 3px 0px var(--border-black),
+        6px 6px 0px var(--shadow-color);
+    position: sticky;
+    top: 70px;
+    left: 0;
+    height: auto;
+    max-height: calc(100vh - 70px);
+    padding: 15px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 0;
+}
+
+/* ===== MIDDLE SECTION ===== */
+#middle-section {
+    flex: 1;
+    min-width: 0;
+    margin-left: 0;
+    padding: 20px;
+    background-color: var(--window-bg);
+    border: 3px solid var(--border-black);
+    box-shadow: 
+        3px 3px 0px var(--border-black),
+        6px 6px 0px var(--shadow-color);
+    margin: 10px;
+    border-radius: 0;
+    overflow-x: auto;
+    word-wrap: break-word;
+    position: relative;
+}
+
+footer, .footer {
+    margin-top: auto;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* ===== SIDEBAR NAVIGATION ===== */
+.left .list-group {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background-color: transparent;
+}
+
+.chapter-container {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-black);
+    background-color: var(--accent-yellow);
+    border: 2px solid var(--border-black);
+    box-shadow: 2px 2px 0px var(--border-black);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.chapter-container:hover {
+    background-color: var(--accent-pink);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--border-black);
+}
+
+.chapter-container.active {
+    background-color: var(--accent-purple);
+    color: var(--text-black);
+    font-weight: bold;
+}
+
+.subchapter-list {
+    margin-left: 10px;
+    padding: 0;
+    background-color: transparent;
+}
+
+.subchapter-item {
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    font-size: 11px;
+    color: var(--text-black);
+    background-color: var(--window-bg);
+    border: 2px solid var(--border-black);
+    box-shadow: 1px 1px 0px var(--border-black);
+    font-weight: normal;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.subchapter-item:hover {
+    background-color: var(--accent-yellow);
+    transform: translate(-1px, -1px);
+    box-shadow: 2px 2px 0px var(--border-black);
+}
+
+.subchapter-item.selected {
+    color: var(--text-black);
+    font-weight: bold;
+    background-color: var(--accent-pink);
+    border-color: var(--border-black);
+}
+
+.subchapter-list.hide {
+    display: none;
+}
+
+.subchapter-list.show {
+    display: block;
+}
+
+/* ===== CONȚINUTUL SUBCAPITOLULUI ===== */
+.subchapter-content {
+    background-color: var(--window-bg);
+    padding: 25px;
+    border: 3px solid var(--border-black);
+    box-shadow: 
+        3px 3px 0px var(--border-black),
+        6px 6px 0px var(--shadow-color);
+    margin-bottom: 20px;
+    font-family: 'Courier New', monospace;
+}
+
+.subchapter-content p {
+    margin-bottom: 15px;
+    color: var(--text-black);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* ===== HEADINGS PENTRU SUBCAPITOLE ===== */
+.subchapter-content h1,
+.subchapter-content h2,
+.subchapter-content h3,
+.subchapter-content h4,
+.subchapter-content h5,
+.subchapter-content h6 {
+    color: var(--text-black);
+    margin: 20px 0 15px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.subchapter-content h1 {
+    font-size: 20px;
+    padding: 10px;
+    background-color: var(--accent-yellow);
+    border: 2px solid var(--border-black);
+}
+
+.subchapter-content h2 {
+    font-size: 18px;
+    padding: 8px;
+    background-color: var(--accent-pink);
+    border: 2px solid var(--border-black);
+}
+
+.subchapter-content h3 {
+    font-size: 16px;
+    padding: 6px;
+    background-color: var(--accent-green);
+    border: 2px solid var(--border-black);
+}
+
+#middle-section > h3 {
+    color: var(--text-black);
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--border-black);
+    padding-bottom: 5px;
+}
+
+.subchapter-content strong,
+.subchapter-content b {
+    font-weight: bold;
+    color: var(--text-black);
+}
+
+/* ===== LISTE PENTRU SUBCAPITOLE ===== */
+.subchapter-content ul {
+    list-style: none !important;
+    padding-left: 20px !important;
+    margin: 15px 0 !important;
+}
+
+.subchapter-content ul li::before {
+    content: "■ " !important;
+    color: var(--text-black) !important;
+    font-weight: bold !important;
+    margin-right: 8px !important;
+}
+
+.subchapter-content ol {
+    list-style: none !important;
+    padding-left: 20px !important;
+    margin: 15px 0 !important;
+    counter-reset: retro-counter;
+}
+
+.subchapter-content ol li {
+    counter-increment: retro-counter;
+    margin-bottom: 8px !important;
+    line-height: 1.6 !important;
+    color: var(--text-black) !important;
+}
+
+.subchapter-content ol li::before {
+    content: counter(retro-counter) ". " !important;
+    color: var(--text-black) !important;
+    font-weight: bold !important;
+    margin-right: 8px !important;
+}
+
+/* ===== CODE BLOCKS ===== */
+.subchapter-content .ql-code-block-container {
+    background-color: var(--window-bg) !important;
+    border: 3px solid var(--border-black) !important;
+    box-shadow: 3px 3px 0px var(--border-black) !important;
+    margin: 20px 0 !important;
+    position: relative !important;
+    padding: 15px !important;
+    padding-left: 70px !important; 
+    font-family: 'Courier New', monospace !important;
+}
+
+.subchapter-content .ql-code-block {
+    background-color: transparent !important;
+    color: var(--text-black) !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    padding: 2px 0 !important;
+    border: none !important;
+    display: block !important;
+    white-space: pre !important;
+}
+
+.subchapter-content .ql-code-block-container::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 55px !important;
+    background-color: var(--accent-yellow) !important;
+    border-right: 3px solid var(--border-black) !important;
+}
+
+.subchapter-content blockquote {
+    padding: 16px;
+    margin: 16px 0;
+    background-color: var(--accent-purple);
+    color: var(--text-black);
+    border: 3px solid var(--border-black);
+    box-shadow: 3px 3px 0px var(--border-black);
+    font-style: italic;
+    position: relative;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+}
+
+/* ===== QUIZ ===== */
+#quiz-container {
+    background-color: var(--window-bg);
+    padding: 30px;
+    border: 3px solid var(--border-black);
+    box-shadow: 
+        3px 3px 0px var(--border-black),
+        6px 6px 0px var(--shadow-color);
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+.quiz-question {
+    margin-bottom: 25px;
+    text-align: left;
+    width: 100%;
+}
+
+.quiz-question p {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-black);
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.form-check {
+    margin: 0 auto 10px; 
+    padding: 10px 15px; 
+    background-color: var(--window-bg);
+    border: 2px solid var(--border-black);
+    box-shadow: 1px 1px 0px var(--border-black);
+    width: 80%;
+    text-align: left;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+}
+
+.form-check:hover {
+    background-color: var(--accent-yellow);
+    transform: translate(-1px, -1px);
+    box-shadow: 2px 2px 0px var(--border-black);
+}
+
+.form-check-input {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border-black);
+    background-color: var(--window-bg);
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-pink);
+    border: 2px solid var(--border-black);
+}
+
+.form-check-label {
+    font-size: 12px;
+    color: var(--text-black);
+    font-weight: normal;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+/* ===== BUTOANE ===== */
+.btn {
+    border: 2px solid var(--border-black) !important;
+    padding: 10px 20px !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    font-family: 'Courier New', monospace !important;
+    box-shadow: 2px 2px 0px var(--border-black) !important;
+}
+
+.btn-primary {
+    background-color: var(--accent-purple) !important;
+    color: var(--text-black) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-pink) !important;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--border-black) !important;
+}
+
+.btn-success {
+    background-color: var(--accent-yellow) !important;
+    color: var(--text-black) !important;
+}
+
+.btn-success:hover {
+    background-color: var(--accent-pink) !important;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--border-black) !important;
+}
+
+#middle-section::before,
+#middle-section::after {
+    display: none !important;
+}
+
+#middle-section > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+#middle-section > div {
+    min-height: 0 !important;
+}
+
+#middle-section > div:empty,
+#middle-section > div[style*="display: none"],
+#middle-section > .mt-4:empty {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+#middle-section > div:not(#quiz-container):not(.subchapter-content):not(.alert):empty {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+#middle-section {
+    font-size: 0;
+}
+
+#middle-section > * {
+    font-size: 14px;
+}

@@ -1,0 +1,7 @@
+<form method="post" action="{% url 'select_role' %}">
+    {% csrf_token %}
+    <label>Register/Log in as:</label><br>
+    <input type="radio" name="role" value="student"> Student<br>
+    <input type="radio" name="role" value="teacher"> Teacher<br>
+    <input type="submit" value="Continue">
+</form>

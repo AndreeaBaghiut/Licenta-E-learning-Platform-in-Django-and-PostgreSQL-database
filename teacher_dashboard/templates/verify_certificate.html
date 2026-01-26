@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Verificare certificat{% endblock %}
+
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'user/css/userProfile.css' %}">
+
+</head>
+
+<div class="verify-container">
+  <div class="verify-box">
+    <h1>Verificare certificat</h1>
+    
+    {% if is_valid %}
+    <div class="certificate-valid">
+      <h2>Certificat valid</h2>
+    </div>
+    
+    <div class="certificate-details">
+      <p><strong>Student:</strong> {{ student.username }}</p>
+      <p><strong>Curs:</strong> {{ course.name }}</p>
+      <p><strong>Data emiterii:</strong> {{ issue_date|date:"d F Y" }}</p>
+      <p><strong>Scor:</strong> {{ certificate.enrollment.progress }}%</p>
+      <p><strong>Cod unic:</strong> {{ certificate.certificate_uuid }}</p>
+    </div>
+    {% else %}
+    <div class="certificate-invalid">
+      <h2>Certificat invalid</h2>
+      <p>Acest certificat nu este valid.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

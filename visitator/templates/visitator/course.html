@@ -1,0 +1,85 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ course.name }} - Detalii</title>
+    <link rel="stylesheet" href="{% static 'visitator/css/course.css' %}">
+</head>
+<body>
+
+{% if is_student %}
+{% include 'student_header.html' %}
+{% else %}
+{% include 'visitor_header.html' %}
+{% endif %}
+
+<main class="main-container">
+    <div class="course-header">
+        <!-- Imaginea cursului -->
+        <div class="course-image-section">
+            <img src="{{ course.course_image.url }}" class="course-image" alt="{{ course.name }}">
+        </div>
+        <!-- Detalii curs -->
+        <div class="course-details-section">
+            <h1 class="course-title">{{ course.name }}</h1>
+            <p class="course-author">Creat de {{ course.teacher.name }} {{ course.teacher.surname }}</p>
+
+            <!-- Detalii aditionale -->
+            <div class="course-info">
+                <h5>Categorii:</h5>
+                <ul class="course-categories">
+                    {% for category in course.categories.all %}
+                        <li>{{ category.name }}</li>
+                    {% endfor %}
+                </ul>
+                
+                <!-- Buton pentru inscriere -->
+                <div class="enrollment-section">
+                    {% if is_student %}
+                        {% if is_enrolled %}
+                            {% if course_completed %}
+                                <button class="btn btn-secondary" disabled>Curs finalizat</button>
+                                <p class="completion-note">Ai finalizat acest curs, dacă scorul tău îndeplinește criteriile minime pentru diplomă, o poți solicita din panoul de student.</p>
+                            {% else %}
+                                <a href="{% url 'student_dashboard_course' course.id %}" class="btn btn-success">Continuă curs</a>
+                            {% endif %}
+                        {% else %}
+                            <a href="{% url 'enroll_course' course.id %}" class="btn btn-primary">Inscrie-te acum</a>
+                        {% endif %}
+                    {% else %}
+                        <a href="{% url 'student_login' %}" class="btn btn-primary">Autentifică-te pentru a te putea înscrie</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sectiune pentru descriere detaliata -->
+    <section class="course-description">
+        <h3 class="course-section-title">Despre curs</h3>
+        <p>{{ course.description }}</p>
+    </section>
+
+    <!-- Alte informatii despre profesor -->
+    <section class="instructor-section">
+        <h3 class="course-section-title">Despre creator</h3>
+        <div class="instructor-info">
+            <img src="{% if course.teacher.profile_picture %}{{ course.teacher.profile_picture.url }}{% else %}/media/profile_pictures/default.png{% endif %}"
+                 alt="{{ course.teacher.name }}" class="instructor-avatar">
+            <div class="instructor-details">
+                <h5>{{ course.teacher.name }} {{ course.teacher.surname }}</h5>
+                <p>Titlu academic: {{ course.teacher.academic_title|replace:"_" }}</p>
+                <p>Ani de activitate: {{ course.teacher.activity_years }}</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "visitator/visitor_header.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'user/css/role.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<main class="role-selection-container">
+    <div class="role-card student-card">
+        <h2>Autentificare student</h2>
+        <div class="role-description">
+            <p>Continuă-ți călătoria de învățare</p>
+            <p>Continuă cursurile începute</p>
+            <p>Urmărește-ți progresul</p>
+        </div>
+        <div class="role-action">
+            <a href="{% url 'student_login' %}" class="btn">Autentificare ca student</a>
+        </div>
+    </div>
+    
+    <div class="role-card teacher-card">
+        <h2>Autentificare profesor</h2>
+        <div class="role-description">
+            <p>Continuă-ți misiunea educațională</p>
+            <p>Gestionează-ți cursurile</p>
+            <p>Vezi statistici</p>
+        </div>
+        <div class="role-action">
+            <a href="{% url 'teacher_login' %}" class="btn">Autentificare ca profesor</a>
+        </div>
+    </div>
+</main>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock %}

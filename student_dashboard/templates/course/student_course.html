@@ -1,0 +1,77 @@
+{% extends 'student_header.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Course: {{ course.name }}</title>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'studentDashboard/css/student_course.css' %}">
+
+{% csrf_token %}
+<div class="content-container w-100">
+    <!-- meniul din stanga cu capitole si subcapitole -->
+    <div class="left" id="chapter-list" data-course-id="{{ course.id }}">
+        <ul class="list-group">
+            {% for chapter in course.chapters.all %}
+                <li class="list-group-item chapter-container {% if current_subchapter and chapter == current_subchapter.chapter %}active{% endif %}" data-chapter-id="{{ chapter.id }}">
+                    {{ chapter.title }}
+                </li>
+                <ul class="list-group subchapter-list" data-chapter-id="{{ chapter.id }}" style="display: {% if current_subchapter and chapter == current_subchapter.chapter %}block{% else %}none{% endif %};">
+                    {% for subchapter in chapter.subchapters.all %}
+                        <li class="list-group-item subchapter-item {% if subchapter == current_subchapter %}selected{% endif %}" data-subchapter-id="{{ subchapter.id }}">
+                            <span class="subchapter-title">{{ subchapter.title }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% if not forloop.last %}
+                    <li class="chapter-separator"></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- sectiunea de mijloc pt continut -->
+    <div id="middle-section">
+        {% if current_subchapter %}
+            {% if current_quiz %}
+                <!-- afisare quiz -->
+                <div id="quiz-container">
+                    <form class="quiz-form" data-quiz-id="{{ current_quiz.id }}">
+                        {% csrf_token %}
+                        {% for question in current_quiz.questions.all %}
+                            <div class="quiz-question">
+                                <p>{% autoescape off %}{{ question.text|escape }}{% endautoescape %}</p>
+
+                                    {% for answer in question.answers.all %}
+                                        <div class="form-check">
+                                            <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}" class="form-check-input" required>
+                                            <label class="form-check-label">{% autoescape off %}{{ answer.text|escape }}{% endautoescape %}</label>
+                                        </div>
+                                    {% endfor %}
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary mt-3">Submit Answer</button>
+                    </form>
+                </div>
+            {% else %}
+                <!-- afisare subcapitol -->
+                <h3>{{ current_subchapter.title }}</h3>
+                <div class="subchapter-content">
+                    {{ current_subchapter.content|safe }}
+                </div>
+                {% if next_exists %}
+                    <button class="btn btn-success mt-3 next-btn" data-subchapter-id="{{ current_subchapter.id }}">Next</button>
+                {% endif %}
+            {% endif %}
+        {% else %}
+            <p>Nu există conținut disponibil.</p>
+        {% endif %}
+    </div>
+</div> 
+<script src="{% static 'studentDashboard/js/student_course.js' %}"></script>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'visitator/visitor_header.html' %}
+{% load static %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'visitator/css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<main class="main-content">
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Învață programare într-un mod simplu și interactiv</h1>
+                    <p class="hero-description">Platformă cu exerciții practice și pregătire pentru interviuri tehnice.</p>
+                    <div class="cta-buttons">
+                        <a href="{% url 'register_role' %}" class="btn btn-primary">Înscrie-te acum</a>
+                        <a href="{% url 'explore' %}" class="btn btn-outline">Explorează</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="features-container">
+            <h2 class="section-title">Ce poți face pe platforma noastră?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-content">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>Cursuri interactive</h4>
+                        <p>Accesează cursuri create de profesori cu experiență în domeniu.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-content">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>Exerciții practice</h4>
+                        <p>Rezolvă probleme care te ajută să înveți programarea prin practică.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-content">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h4>Pregătire interviuri</h4>
+                        <p>Exersează întrebări comune din interviurile pentru joburi în programare.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="courses-preview">
+        <div class="courses-container">
+            <div class="courses-header">
+                <h2>Cele mai populare cursuri</h2>
+                <a href="{% url 'explore' %}" class="view-all-link">Vezi toate cursurile →</a>
+            </div>
+            
+            <div class="courses-grid">
+                {% for course in popular_courses %}
+                <div class="course-card">
+                    <img src="{{ course.course_image.url }}" class="course-image" alt="{{ course.name }}">
+                    <div class="course-body">
+                        <h5 class="course-title">{{ course.name }}</h5>
+                        <p class="course-description">{{ course.description|truncatewords:12 }}</p>
+                    </div>
+                    <div class="course-footer">
+                        <a href="{% url 'course_detail' course.id %}" class="btn btn-outline-small">Vezi detalii</a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="no-courses">
+                    <p class="no-courses-text">Curând vom adăuga cursuri noi!</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="join-section">
+        <div class="join-container">
+            <h2>Ești gata să începi?</h2>
+            <p class="join-description">Creează-ți un cont și alătură-te comunității noastre!</p>
+            <div class="join-buttons">
+                <a href="{% url 'student_registration' %}" class="btn btn-light">Înscrie-te ca student</a>
+                <a href="{% url 'teacher_registration' %}" class="btn btn-outline-light">Înscrie-te ca profesor</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+{% endblock %}

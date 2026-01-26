@@ -1,0 +1,193 @@
+.middle[data-quiz-id] {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    margin: 10px 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    border-left: 4px solid #E6C28C;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.question-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    background-color: #ffffff;
+    border: 1px solid #E8E2D3;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #5D534A;
+    transition: all 0.2s ease;
+}
+
+.question-input:focus {
+    outline: none;
+    border-color: #D5A76C;
+    box-shadow: 0 0 5px rgba(213, 167, 108, 0.2);
+}
+
+.question-input::placeholder {
+    color: #A7998B;
+    font-style: italic;
+}
+
+.answer-container {
+    width: 100%;
+    margin-bottom: 16px;
+    background-color: #F9F7F3;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.answer-div {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    border-left: 2px solid #E6C28C;
+    transition: all 0.2s ease;
+}
+
+.answer-div:hover {
+    border-left-color: #D5A76C;
+    background-color: #FFFBF0;
+    transform: translateX(3px);
+}
+
+.answer-input {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #E8E2D3;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #5D534A;
+    background-color: #FFFBF0;
+}
+
+.answer-input:focus {
+    outline: none;
+    border-color: #D5A76C;
+    box-shadow: 0 0 5px rgba(213, 167, 108, 0.2);
+}
+
+.correct-checkbox {
+    margin: 0 8px;
+    width: 16px;
+    height: 16px;
+    accent-color: #A78B69;
+}
+
+.correct-label {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #5D534A;
+}
+
+.delete-btn {
+    background-color: rgba(165, 121, 95, 0.1);
+    color: #8A6642;
+    border:rgb(215, 167, 119)lid #E8E2D3;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: rgba(165, 121, 95, 0.2);
+    color: #664c33;
+    transform: translateX(2px);
+}
+
+.add-answer-btn {
+    display: block;
+    margin: 12px 0;
+    background-color: rgba(243, 228, 192, 0.4);
+    color: #8A6642;
+    border: 1px solid #E8E2D3;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.add-answer-btn:hover {
+    background-color: rgba(243, 228, 192, 0.6);
+    color: #664c33;
+    transform: translateX(2px);
+}
+
+.quiz-button-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 10px;
+    border-top: 1px solid #EFE9DC;
+}
+
+.save-quiz-btn {
+    background-color: rgba(138, 102, 66, 0.1);
+    color: #8A6642;
+    border: 1px solid #E8E2D3;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.save-quiz-btn:hover {
+    background-color: rgba(138, 102, 66, 0.2);
+    color: #664c33;
+    transform: translateX(2px);
+}
+
+.delete-quiz-btn {
+    background-color: rgba(165, 121, 95, 0.1);
+    color: #A5795F;
+    border: 1px solid #E8E2D3;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.delete-quiz-btn:hover {
+    background-color: rgba(165, 121, 95, 0.2);
+    color: #8A6642;
+    transform: translateX(2px);
+}
+
+.quiz-item {
+    padding: 8px 12px 8px 40px;
+    margin-top: 5px;
+    background-color: #F9F7F3;
+    border-radius: 2px;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-size: 14px;
+    color: #5D534A;
+}
+
+.quiz-item:hover {
+    background-color: #F3E4C0;
+    border-left-color: #D5A76C;
+    transform: translateX(3px);
+}
+
+.quiz-item.selected {
+    background-color: rgba(243, 228, 192, 0.4);
+    border-left: 2px solid #D5A76C;
+    font-weight: 500;
+}

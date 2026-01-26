@@ -1,0 +1,63 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donații - Susține educația</title>
+    <link rel="stylesheet" href="{% static 'visitator/css/donate.css' %}">
+</head>
+<body>
+
+{% if is_student %}
+{% include 'student_header.html' %}
+{% else %}
+{% include 'visitor_header.html' %}
+{% endif %}
+
+<main class="donations-page">
+    <div class="donations-container">
+        <div class="donations-content">
+            <h1>Susține educația gratuită</h1>
+            
+            <div class="donations-main-content">
+                <div class="donation-message">
+                    <p>Acest site educațional rămâne în picioare datorită generozității donatorilor. Donațiile tale ne ajută să:</p>
+                    <ul>
+                        <li>Menținem serverele funcționale și site-ul accesibil</li>
+                        <li>Oferim educație gratuită pentru toți utilizatorii</li>
+                        <li>Dezvoltăm conținut educațional nou</li>
+                        <li>Îmbunătățim funcționalitățile platformei</li>
+                    </ul>
+                    <p>Orice sumă contează și ne ajută să continuăm misiunea noastră.</p>
+                </div>
+                
+                <div class="donation-form">
+                    <h3>Donează acum</h3>
+                    <p>Alege suma dorită și apasă butonul de mai jos pentru a continua cu plata.</p>
+                    
+                    <form action="{% url 'make_donation' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <label for="amount">Suma (EUR)</label>
+                            <input type="number" id="amount" name="amount" min="1" value="1" class="amount-input" required>
+                        </div>
+                        
+                        <button type="submit" class="donate-btn">
+                            Donează prin Stripe
+                        </button>
+                    </form>
+                    
+                    <p class="security-note">Plățile sunt procesate securizat prin Stripe.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
+</body>
+</html>
