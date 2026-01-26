@@ -243,50 +243,8 @@ See requirements.txt for complete list. Main packages:
 
 ## License
 
-This project is a bachelor's degree project (Licenta).
+This project is a bachelor's degree project.
 
-## Contributing
-
-For development and bug fixes, please create a pull request with a clear description of changes.
-
-## Support
-
-For issues and questions, please open an issue in the repository.
-
-## Deployment Considerations
-
-Before deploying to production:
-
-1. **Security**
-   - Change `SECRET_KEY` in settings
-   - Set `DEBUG = False`
-   - Update `ALLOWED_HOSTS` with your domain
-   - Use environment variables for sensitive configuration
-   - Enable HTTPS
-
-2. **Database**
-   - Migrate from SQLite to PostgreSQL/MySQL
-   - Set up database backups
-
-3. **Static & Media Files**
-   - Configure CDN or static file server
-   - Set up media file storage
-
-4. **Performance**
-   - Enable caching
-   - Set up task queue (Celery) for async operations
-   - Configure CORS if needed
-
-5. **Monitoring**
-   - Set up error tracking (Sentry)
-   - Configure logging
-   - Set up uptime monitoring
-
-## Additional Resources
-
-- [Django Documentation](https://docs.djangoproject.com/)
-- [Django Best Practices](https://django.readthedocs.io/en/stable/internals/contributing/writing-code/coding-style.html)
-- [TinyMCE Documentation](https://www.tiny.cloud/develop/tinymce/)
 
 ---
 
