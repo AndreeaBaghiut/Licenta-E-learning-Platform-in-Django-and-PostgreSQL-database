@@ -40,41 +40,10 @@ This is a full-featured LMS that enables teachers to create and manage courses, 
   - Real-time progress tracking
   - Course performance analytics
 
-## Platform photos:
-
-### Student Dashboard
-Students can view enrolled courses, track progress, and access learning materials.
-![Student Dashboard](images/student-dashboard.png)
-
-### Course View
-Interactive course content with chapters, subchapters, and embedded videos.
-![Course View](images/course-view.png)
-
-### Teacher Dashboard
-Comprehensive interface for teachers to create, edit, and manage courses.
-![Teacher Dashboard](images/teacher-dashboard.png)
-
-### Quiz Interface
-Interactive quizzes with real-time feedback and progress tracking.
-![Quiz Interface](images/quiz-interface.png)
-
-### User Authentication
-Secure login and registration system with email verification.
-![Authentication](images/authentication.png)
-
-### Certificate View
-Professional certificates issued upon course completion.
-![Certificate](images/certificate.png)
-
-### Course Categories
-Browse and filter courses by categories (Languages, General, etc.).
-![Categories](images/categories.png)
-
----
 
 **Note**: To add screenshots, create an `images/` folder in the project root and add your screenshots with the names referenced above. Update the image paths as needed.
 
-## �🛠️ Tech Stack
+## Tech Stack
 
 - **Backend**: Django 5.0+
 - **Database**: SQLite (default, configurable)
