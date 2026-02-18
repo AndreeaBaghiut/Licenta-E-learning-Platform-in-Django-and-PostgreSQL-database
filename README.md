@@ -41,12 +41,10 @@ This is a full-featured LMS that enables teachers to create and manage courses, 
   - Course performance analytics
 
 
-**Note**: To add screenshots, create an `images/` folder in the project root and add your screenshots with the names referenced above. Update the image paths as needed.
-
 ## Tech Stack
 
 - **Backend**: Django 5.0+
-- **Database**: SQLite (default, configurable)
+- **Database**: PostgreSQL
 - **Frontend**: HTML5, CSS3, JavaScript
 - **Key Dependencies**:
   - `django-crispy-forms` - Form rendering
